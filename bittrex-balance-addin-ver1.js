@@ -136,6 +136,7 @@ function sellAll(flag){
 			getorderhistory("",function(orderhistories){
 				b_getticker("btc_jpy", function(bitbankdata){
 					var priceArray = {};
+					var estmateValue = 0;
 					$.each(marketsummaries.result, function(i, record) {
 						priceArray[record.MarketName] = record.Bid
 					});
@@ -144,6 +145,7 @@ function sellAll(flag){
 					$.each(balances.result, function(i, record) {
 						if (record.Available > 0){
 							quantityArray[record.Currency] = record.Available
+							estmateValue += record.Balance*(priceArray['BTC-'+record.Currency]  == undefined ? 0:priceArray['BTC-'+record.Currency]);
 						}
 					});
 
@@ -186,11 +188,11 @@ function sellAll(flag){
 
 					});
 					message +=   '\n------------------------------------------------------------------------------'
-					message +=   '\n∑PROFIT : ' + profit.toFixed(4) + ' (BTC) ⇒ ' + parseInt(profit*priceArray["USDT-BTC"]).toLocaleString('en-US', {style: 'currency',currency: 'USD',}) + "  ⇒ "+ parseInt(bitbankdata.data.last*profit).toLocaleString('ja-JP', {style: 'currency',currency: 'JPY',}) +"(>_<)";
+					message +=   '\n∑PROFIT : ' + profit.toFixed(4) + ' (BTC) ⇒ ' + parseInt(profit*priceArray["USDT-BTC"]).toLocaleString('en-US', {style: 'currency',currency: 'USD',}) + "  ⇒ "+ parseInt(bitbankdata.data.last*profit).toLocaleString('ja-JP', {style: 'currency',currency: 'JPY',});
 
 					if (flag){
+						message +=  "\nEstimatedValue: "+(estmateValue*0.9975).toFixed(4)+' (BTC) ⇒ '+parseInt(estmateValue*0.9975*priceArray["USDT-BTC"]).toLocaleString('en-US', {style: 'currency',currency: 'USD',})+ "  ⇒ "+ parseInt(bitbankdata.data.last*(estmateValue*0.9975-0.001)).toLocaleString('ja-JP', {style: 'currency',currency: 'JPY',});
 						message +=   '\n------------------------------------------------------------------------------'
-
 						$.notify(message
 							+ "\nTokyo Japan----------: "+ calcTime('+9')
 							+ "\nUnited States--------: " + calcTime('-9')
@@ -203,6 +205,7 @@ function sellAll(flag){
 							className:'info'
 						});
 					}else if (confirm(message)){
+						message +=  "\nEstimatedValue: "+(estmateValue*0.9975).toFixed(4)+' (BTC) ⇒ '+parseInt(estmateValue*0.9975*priceArray["USDT-BTC"]).toLocaleString('en-US', {style: 'currency',currency: 'USD',})+ "  ⇒ "+ parseInt(bitbankdata.data.last*(estmateValue*0.9975-0.001)).toLocaleString('ja-JP', {style: 'currency',currency: 'JPY',});
 						message +=   '\n-----------------------------------------------------------------------------'
 
 						$.notify(message
