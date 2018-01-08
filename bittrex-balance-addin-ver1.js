@@ -121,11 +121,15 @@ function sellAll(flag){
 	load();
 
 	var items = [];
-	$("#balanceTable tbody").find("input[type=checkbox]:checked").each(function(){
-		items.push("BTC-"+$(this).attr("id").replace("cb_",""))
+	$("#balanceTable tbody").find("input[type=checkbox]").each(function(){
+		if (flag){
+			items.push("BTC-"+$(this).attr("id").replace("cb_",""))
+		}else if (this.checked == true){
+			items.push("BTC-"+$(this).attr("id").replace("cb_",""))
+		}
 	});
 
-	if (items.length ==0){
+	if (!flag && items.length ==0){
 		$.notify("Please select item which you want sell.","error");
 		return;
 	}
@@ -137,6 +141,7 @@ function sellAll(flag){
 				b_getticker("btc_jpy", function(bitbankdata){
 					var priceArray = {};
 					var estmateValue = 0;
+					var btcValue = 0;
 					$.each(marketsummaries.result, function(i, record) {
 						priceArray[record.MarketName] = record.Bid
 					});
@@ -148,10 +153,11 @@ function sellAll(flag){
 							estmateValue += record.Balance*(priceArray['BTC-'+record.Currency]  == undefined ? 0:priceArray['BTC-'+record.Currency]);
 						}
 					});
-
+					btcValue = quantityArray["BTC"] == undefined?0:quantityArray["BTC"];
+					estmateValue += btcValue;
 					var orderArray={};
 					$.each(orderhistories.result, function(i, record) {
-						if (record.OrderType = 'LIMIT_BUY' && orderArray[record.Exchange] == undefined){
+						if (record.OrderType == 'LIMIT_BUY' && orderArray[record.Exchange] == undefined){
 							orderArray[record.Exchange] = record.PricePerUnit;
 						}
 					});
