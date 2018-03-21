@@ -3,22 +3,22 @@ var lastNonces = [];
 
 var s = document.createElement("script");
 s.type = "text/javascript";
-s.src = "https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/mark.js";
+s.src = "https://cdn.jsdelivr.net/mark.js/7.0.0/mark.js"; //"https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/mark.js";
 $("head").append(s);
 
 s = document.createElement("script");
 s.type = "text/javascript";
-s.src = "https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/mark.min.js";
+s.src = "https://cdn.jsdelivr.net/mark.js/7.0.0/mark.min.js";
 $("head").append(s);
 
 s = document.createElement("script");
 s.type = "text/javascript";
-s.src = "https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/mark.es6.js";
+s.src = "https://cdn.jsdelivr.net/mark.js/7.0.0/mark.es6.js";
 $("head").append(s);
 
 s = document.createElement("script");
 s.type = "text/javascript";
-s.src = "https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/mark.es6.min.js";
+s.src = "https://cdn.jsdelivr.net/mark.js/7.0.0/mark.es6.min.js";
 $("head").append(s);
 
 //s = document.createElement("script");
