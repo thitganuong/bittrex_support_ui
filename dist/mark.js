@@ -742,14 +742,19 @@
             ret = startNode.splitText(end - start);
         var repl = document.createElement(hEl);
         repl.setAttribute('data-markjs', 'true');
-        repl.setAttribute('href','https://www.google.co.jp');
-        repl.setAttribute('onselect',window.location.href = 'https://www.binance.com/');
         
+        var para = document.createElement("a");                       // Create a <p> element
+        var t = document.createTextNode(startNode.textContent);       // Create a text node
+        para.appendChild(t);  
+        para.setAttribute('href','https://www.google.co.jp');
+        //repl.setAttribute('onselect',window.location.href = 'https://www.binance.com/');
+        
+        repl.appendChild(para);
         //console.log("tiker: "+ repl.innerText);
         if (this.opt.className) {
           repl.setAttribute('class', this.opt.className);
         }
-        repl.textContent = startNode.textContent;
+        //repl.textContent = startNode.textContent;
         startNode.parentNode.replaceChild(repl, startNode);
         return ret;
       }
