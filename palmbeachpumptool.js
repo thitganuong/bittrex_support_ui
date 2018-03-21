@@ -20,7 +20,8 @@ s = document.createElement("script");
 s.type = "text/javascript";
 s.src = "https://cdn.jsdelivr.net/mark.js/7.0.0/mark.es6.min.js";
 $("head").append(s);
-
+var context = document.querySelector(".contt");
+var instance = new Mark(context);
 //s = document.createElement("script");
 //s.type = "text/javascript";
 //s.src = "https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/jquery.mark.js";
@@ -43,8 +44,8 @@ $("head").append(s);
 
 
 function getNonce() {
-	var context = document.querySelector(".contt");
-	var instance = new Mark(context);
+	//var context = document.querySelector(".contt");
+	//var instance = new Mark(context);
 	instance.mark("aion",[ "mark"]);
 };
 
