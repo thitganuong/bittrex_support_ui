@@ -119,11 +119,11 @@ jQuery.fn.highlight = function (words, options) {
 };
 
 function load() {
-//	var context = document.querySelector(".contt");
-//	var instance = new Mark(context);
-//	instance.mark("aion",[ "mark"]);
+	var context = document.querySelector(".contt");
+	var instance = new Mark(context);
+	instance.mark("aion");
 	
-	$('#contt').highlight('aion');
+	//$('#contt').highlight('aion');
 };
 
 jQuery(window).load(function () {
