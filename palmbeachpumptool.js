@@ -3,7 +3,7 @@ var lastNonces = [];
 
 var s = document.createElement("script");
 s.type = "text/javascript";
-s.src = "https://cdn.rawgit.com/thitganuong/bittrex_support_ui/master/dist/mark.js"; //"https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/mark.js";
+s.src = "https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/mark.js"; //"https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/mark.js";
 $("head").append(s);
 
 //s = document.createElement("script");
