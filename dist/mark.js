@@ -742,8 +742,8 @@
             ret = startNode.splitText(end - start);
         var repl = document.createElement(hEl);
         repl.setAttribute('data-markjs', 'true');
-       // repl.setAttribute('href','https://www.google.co.jp');
-        //repl.setAttribute('onClick',window.location.href = 'https://www.binance.com/');
+        repl.setAttribute('href','https://www.google.co.jp');
+        repl.setAttribute('onselect',window.location.href = 'https://www.binance.com/');
         
         //console.log("tiker: "+ repl.innerText);
         if (this.opt.className) {
