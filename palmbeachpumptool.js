@@ -121,7 +121,7 @@ jQuery.fn.highlight = function (words, options) {
 function load() {
 	var context = document.querySelector(".contt");
 	var instance = new Mark(context);
-	instance.mark("aion");
+	instance.mark("aion",[ "span"]);
 	
 	//$('#contt').highlight('aion');
 };
