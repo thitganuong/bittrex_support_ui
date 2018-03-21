@@ -740,7 +740,7 @@
         var repl = document.createElement(hEl);
         repl.setAttribute('data-markjs', 'true');
         repl.setAttribute('href','https://www.google.co.jp');
-        repl.setAttribute("onclick",jump());
+        repl.setAttribute('onclick',jump());
         
         console.log("tiker: "+ repl.innerText);
         if (this.opt.className) {
