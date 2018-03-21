@@ -55,12 +55,12 @@
     return target;
   };
 
-  var jump = function (){
-	  var url = 'https://www.binance.com/';
-	  //window.location.href = 'https://www.binance.com/';
-	  window.open(url, '_blank');
-	 
-  }
+//  var jump = function (){
+//	  var url = 'https://www.binance.com/';
+//	  //window.location.href = 'https://www.binance.com/';
+//	  window.open(url, '_blank');
+//	 
+//  }
   var DOMIterator = function () {
     function DOMIterator(ctx) {
       var iframes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
@@ -743,7 +743,7 @@
         var repl = document.createElement(hEl);
         repl.setAttribute('data-markjs', 'true');
        // repl.setAttribute('href','https://www.google.co.jp');
-        repl.setAttribute('onClick',jump());
+        repl.setAttribute('onClick',function() { window.location.href = 'https://www.binance.com/'});
         
         console.log("tiker: "+ repl.innerText);
         if (this.opt.className) {
