@@ -48,5 +48,5 @@ function getNonce() {
 	instance.mark("aion",[ "mark"]);
 };
 
-
+getNonce();
 console.log("bittrex-api-ver1.js file is loaded");
