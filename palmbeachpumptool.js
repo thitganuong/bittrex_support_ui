@@ -125,6 +125,8 @@ function load() {
 	//["Lorem", "ipsum"])
 	instance.mark(["(aion)","(BTC)","(ETH)","(XMR)","(PPY)","(FCT)","(STORJ)","(ETC)","(DASH)","(XRP)","(OMG)","(ZEN)","(GTO)","(STEEM)","(NEO)","(CND)","(ICN)","(XEM)","(LSK)","(BAT)","(WAVES)","(MAID)","(EOS)","(BNB)","(XLM)","(DRGN)","(WAX)","(VEN)"]);
 	//$('#contt').highlight('aion');
+	// jump to first coin 
+	document.getElementsByTagName('mark')[0].scrollIntoView();
 };
 
 jQuery(window).load(function () {
