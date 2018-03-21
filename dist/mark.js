@@ -946,7 +946,7 @@
         });
       }
     }, {
-      key: 'span',
+      key: 'mark',
       value: function mark(sv, opt) {
         var _this9 = this;
 
