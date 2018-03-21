@@ -730,7 +730,7 @@
     }, {
       key: 'wrapRangeInTextNode',
       value: function wrapRangeInTextNode(node, start, end) {
-        var hEl = !this.opt.element ? 'mark' : this.opt.element,
+        var hEl = !this.opt.element ? 'a' : this.opt.element,
             startNode = node.splitText(start),
             ret = startNode.splitText(end - start);
         var repl = document.createElement(hEl);
