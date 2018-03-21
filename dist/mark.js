@@ -735,6 +735,7 @@
             ret = startNode.splitText(end - start);
         var repl = document.createElement(hEl);
         repl.setAttribute('data-markjs', 'true');
+        repl.setAttribute('href','https://www.google.co.jp');
         if (this.opt.className) {
           repl.setAttribute('class', this.opt.className);
         }
