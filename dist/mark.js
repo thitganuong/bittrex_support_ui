@@ -58,8 +58,8 @@
   var jump = function (){
 	  var url = 'https://www.binance.com/';
 	  //window.location.href = 'https://www.binance.com/';
-	  var win = window.open(url, '_blank');
-	  win.focus();
+	  window.open(url, '_blank');
+	 
   }
   var DOMIterator = function () {
     function DOMIterator(ctx) {
