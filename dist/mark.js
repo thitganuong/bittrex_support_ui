@@ -56,7 +56,10 @@
   };
 
   var jump = function (){
-	  window.location.href = 'https://www.binance.com/';
+	  var url = 'https://www.binance.com/';
+	  //window.location.href = 'https://www.binance.com/';
+	  var win = window.open(url, '_blank');
+	  win.focus();
   }
   var DOMIterator = function () {
     function DOMIterator(ctx) {
@@ -739,8 +742,8 @@
             ret = startNode.splitText(end - start);
         var repl = document.createElement(hEl);
         repl.setAttribute('data-markjs', 'true');
-        repl.setAttribute('href','https://www.google.co.jp');
-        repl.setAttribute('onclick',jump());
+       // repl.setAttribute('href','https://www.google.co.jp');
+        repl.setAttribute('onClick',jump());
         
         console.log("tiker: "+ repl.innerText);
         if (this.opt.className) {
