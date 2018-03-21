@@ -746,7 +746,7 @@
         var para = document.createElement("a");                       // Create a <p> element
         var t = document.createTextNode(startNode.textContent);       // Create a text node
         para.appendChild(t);  
-        para.setAttribute('href','https://www.google.co.jp');
+        para.setAttribute('href','https://www.binance.com/trade.html?symbol=' + startNode.textContent +'_BTC');
         //repl.setAttribute('onselect',window.location.href = 'https://www.binance.com/');
         
         repl.appendChild(para);
