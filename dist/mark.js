@@ -736,8 +736,8 @@
     }, {
       key: 'wrapRangeInTextNode',
       value: function wrapRangeInTextNode(node, start, end) {
-    	  console.log("node: "+ node);
-        var hEl = !this.opt.element ? 'mark' : this.opt.element,
+    	  //console.log("node: "+ node);
+        var hEl = !this.opt.element ? 'span' : this.opt.element,
             startNode = node.splitText(start),
             ret = startNode.splitText(end - start);
         var repl = document.createElement(hEl);
@@ -745,7 +745,7 @@
        // repl.setAttribute('href','https://www.google.co.jp');
         //repl.setAttribute('onClick',window.location.href = 'https://www.binance.com/');
         
-        console.log("tiker: "+ repl.innerText);
+        //console.log("tiker: "+ repl.innerText);
         if (this.opt.className) {
           repl.setAttribute('class', this.opt.className);
         }
@@ -946,7 +946,7 @@
         });
       }
     }, {
-      key: 'mark',
+      key: 'span',
       value: function mark(sv, opt) {
         var _this9 = this;
 
