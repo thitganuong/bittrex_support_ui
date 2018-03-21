@@ -737,7 +737,7 @@
       key: 'wrapRangeInTextNode',
       value: function wrapRangeInTextNode(node, start, end) {
     	  //console.log("node: "+ node);
-        var hEl = !this.opt.element ? 'span' : this.opt.element,
+        var hEl = !this.opt.element ? 'mark' : this.opt.element,
             startNode = node.splitText(start),
             ret = startNode.splitText(end - start);
         var repl = document.createElement(hEl);
