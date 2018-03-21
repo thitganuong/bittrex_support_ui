@@ -746,7 +746,9 @@
         var para = document.createElement("a");                       // Create a <p> element
         var t = document.createTextNode(startNode.textContent);       // Create a text node
         para.appendChild(t);  
-        para.setAttribute('href','https://www.binance.com/trade.html?symbol=' + startNode.textContent.toUpperCase() +'_BTC');
+        var tickerString = startNode.textContent.replace("(", "");
+        tickerString = tickerString.replace(")", "");
+        para.setAttribute('href','https://www.binance.com/trade.html?symbol=' + tickerString.toUpperCase() +'_BTC');
         //repl.setAttribute('onselect',window.location.href = 'https://www.binance.com/');
         
         repl.appendChild(para);
