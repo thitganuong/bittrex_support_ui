@@ -20,6 +20,7 @@ s = document.createElement("script");
 s.type = "text/javascript";
 s.src = "https://cdn.jsdelivr.net/mark.js/7.0.0/mark.es6.min.js";
 $("head").append(s);
+new Mark;
 var context = document.querySelector(".contt");
 var instance = new Mark(context);
 //s = document.createElement("script");
