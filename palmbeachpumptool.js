@@ -1,6 +1,11 @@
 var apiURL = 'https://bittrex.com/api/v1.1';
 var lastNonces = [];
 
+	var s = document.createElement("script");
+s.type = "text/javascript";
+s.src = "http://code.jquery.com/jquery-1.11.0.min.js"; //"https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/mark.js";
+$("head").append(s);
+
 var s = document.createElement("script");
 s.type = "text/javascript";
 s.src = "https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/mark.js"; //"https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/mark.js";
