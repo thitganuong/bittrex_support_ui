@@ -45,7 +45,7 @@ $("head").append(s);
 function getNonce() {
 	var context = document.querySelector(".context");
 	var instance = new Mark(context);
-	instance.mark("aion" [, "mark"]);
+	instance.mark("aion",[ "mark"]);
 };
 
 
