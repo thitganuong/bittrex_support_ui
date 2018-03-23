@@ -15,7 +15,7 @@ function getAllTikers(uriAPI){
 function load() {
 	//get tikers
 	var json_obj = JSON.parse(jsonData);
-	onsole.log("List "+json_obj[0].symbol);
+	console.log("List "+json_obj[0].symbol);
 	
 	var context = document.querySelector(".contt");
 	var instance = new Mark(context);
