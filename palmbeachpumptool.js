@@ -14,8 +14,8 @@ function getAllTikers(uriAPI){
 
 function load() {
 	//get tikers
-	var json_obj = JSON.parse(getAllTikers(binanceAllTikersAPI));
-	console.log("List "+json_obj[0].symbol);
+	//var json_obj = JSON.parse(getAllTikers(binanceAllTikersAPI));
+	c//onsole.log("List "+json_obj[0].symbol);
 	
 	var context = document.querySelector(".contt");
 	var instance = new Mark(context);
