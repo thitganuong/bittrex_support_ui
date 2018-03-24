@@ -98,7 +98,7 @@ function floatButtonNext(){
 	var button3 = document.createElement("a");
 	button3.className = "float3";
 	button3.setAttribute('href','#');
-//	button1.addEventListener ("click", jumpToPump);
+	button1.addEventListener ("click", jumpNext);
 	var child3 = document.createElement("i");
 	child3.className = "fa my-float";
 
