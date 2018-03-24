@@ -54,8 +54,6 @@ function addJumpButton(){
 function jumpToFirstCoin(){
 	// jump to first coin 
 	document.getElementsByTagName('mark')[0].scrollIntoView();
-//	var redirectWindow = window.open('https://www.binance.com/', '_blank');
-//    redirectWindow.location;
 }
 
 function floatButton(){
@@ -80,17 +78,21 @@ function floatButtonTest(){
 	var button1 = document.createElement("a");
 	button1.className = "float2";
 	button1.setAttribute('href','#');
+	button1.addEventListener ("click", jumpToPump);
 	var child1 = document.createElement("i");
 	child1.className = "fa my-float";
-	child1.innerHTML = document.getElementsByTagName('mark')[0].textContent;
-	var ticker = document.getElementsByTagName('mark')[0].textContent;
-	ticker = ticker.replace("(", "");
-	ticker = ticker.replace(")", "");
-	child1.setAttribute('href','https://www.binance.com/trade.html?symbol=' + ticker.toUpperCase() +'_BTC');
 	button1.appendChild(child1);
 	x.appendChild(button1);
 }
 
+function jumpToPump(){
+	var ticker = document.getElementsByTagName('mark')[0].textContent;
+	ticker = ticker.replace("(", "");
+	ticker = ticker.replace(")", "");
+	var url = 'https://www.binance.com/trade.html?symbol=' + ticker.toUpperCase() +'_BTC';
+	var redirectWindow = window.open(url, '_blank');
+	redirectWindow.location;
+}
 
 
 
