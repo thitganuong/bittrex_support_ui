@@ -79,7 +79,7 @@ function floatPickButton(){
 	var childPickElement = document.createElement("i");
 	childPickElement.className = "fa fa-plus my-float-pick";
 	buttonPickFloat.appendChild(childElement);
-	x.appendChild(buttonFloat);
+	x.appendChild(buttonPickFloat);
 }
 
 jQuery(window).load(function () {
