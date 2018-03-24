@@ -23,6 +23,7 @@ function load() {
 	//addJumpButton();
 	floatButton();
 	floatButtonPick();
+	floatButtonPre();
 	floatButtonNext();
 	//floatPickButton();
 };
@@ -93,16 +94,28 @@ function floatButtonPick(){
 	x.appendChild(button1);
 }
 
-function floatButtonNext(){
+function floatButtonPre(){
 	var x = document.getElementsByClassName("grid col-700")[0];
 	var button3 = document.createElement("a");
 	button3.className = "float3";
-	button3.addEventListener ("click", jumpNext);
+	button3.addEventListener ("click", jumpBack);
 	var child3 = document.createElement("i");
 	child3.className = "fa my-float";
-	child3.innerHTML = "⬇︎";
+	child3.innerHTML = "⬆︎";
 	button3.appendChild(child3);
 	x.appendChild(button3);
+}
+
+function floatButtonNext(){
+	var x = document.getElementsByClassName("grid col-700")[0];
+	var button4 = document.createElement("a");
+	button4.className = "float4";
+	button4.addEventListener ("click", jumpNext);
+	var child4 = document.createElement("i");
+	child4.className = "fa my-float";
+	child4.innerHTML = "⬇︎︎︎";
+	button4.appendChild(child4);
+	x.appendChild(button4);
 }
 
 function jumpToPump(){
@@ -116,6 +129,15 @@ function jumpToPump(){
 
 function jumpNext(){
 	jumpPosition = jumpPosition +1;
+	console.log("jumpPosition: " + jumpPosition);
+	document.getElementsByTagName('mark')[jumpPosition].scrollIntoView();
+}
+
+function jumpBack(){
+	jumpPosition = jumpPosition -1 ;
+	if(jumpPosition < 0){
+		jumpPosition = 0;
+	}
 	console.log("jumpPosition: " + jumpPosition);
 	document.getElementsByTagName('mark')[jumpPosition].scrollIntoView();
 }
