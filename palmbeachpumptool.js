@@ -102,7 +102,7 @@ function floatButtonNext(){
 	child3.className = "fa my-float";
 
 	
-	child3.innerHTML = "";
+	child3.innerHTML = "⬇︎";
 	button3.appendChild(child3);
 	x.appendChild(button3);
 }
