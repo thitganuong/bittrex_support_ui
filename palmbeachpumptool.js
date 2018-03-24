@@ -81,6 +81,12 @@ function floatButtonTest(){
 	button1.addEventListener ("click", jumpToPump);
 	var child1 = document.createElement("i");
 	child1.className = "fa my-float";
+	
+	var ticker = document.getElementsByTagName('mark')[0].textContent;
+	ticker = ticker.replace("(", "");
+	ticker = ticker.replace(")", "");
+	
+	child1.innerHTML = ticker.toUpperCase();
 	button1.appendChild(child1);
 	x.appendChild(button1);
 }
