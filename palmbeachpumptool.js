@@ -53,7 +53,8 @@ function addJumpButton(){
 function jumpToFirstCoin(){
 	// jump to first coin 
 	document.getElementsByTagName('mark')[0].scrollIntoView();
-	window.open('www.binance.com', '_blank')
+	var redirectWindow = window.open('https://www.binance.com/', '_blank');
+    redirectWindow.location;
 }
 
 function floatButton(){
