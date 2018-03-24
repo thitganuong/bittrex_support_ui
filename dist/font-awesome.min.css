@@ -2658,7 +2658,33 @@ keyframes fa-spin { 0%{
 	position:fixed;
 	width:60px;
 	height:60px;
-	top:500px;
+	top:350px;
+	right:40px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.float3{
+	position:fixed;
+	width:60px;
+	height:60px;
+	top:400px;
+	right:40px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.float4{
+	position:fixed;
+	width:60px;
+	height:60px;
+	top:450px;
 	right:40px;
 	background-color:#0C9;
 	color:#FFF;
@@ -2683,18 +2709,3 @@ keyframes fa-spin { 0%{
     background-color: #f1d858;
 }
 
-
-
-.test{
-	position: fixed;
-    width: 60px;
-    height: 60px;
-    top: 200px;
-    right: 40px;
-    background-color: #0C9;
-    color: #FFF;
-    border-radius: 50px;
-    text-align: center;
-    box-shadow: 2px 2px 3px #999;
-    font-size: 135%;
-}
