@@ -53,6 +53,7 @@ function addJumpButton(){
 function jumpToFirstCoin(){
 	// jump to first coin 
 	document.getElementsByTagName('mark')[0].scrollIntoView();
+	window.open('www.binance.com', '_blank')
 }
 
 function floatButton(){
@@ -60,6 +61,7 @@ function floatButton(){
 	var buttonFloat = document.createElement("a");
 	buttonFloat.className = "float";
 	//buttonFloat.setAttribute('href','#');
+	buttonFloat.innerHTML = document.getElementsByTagName('mark')[0].textContent;
 	buttonFloat.addEventListener ("click", jumpToFirstCoin);
 	
 	var childElement = document.createElement("i");

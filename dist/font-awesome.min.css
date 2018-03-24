@@ -605,8 +605,8 @@ keyframes fa-spin { 0%{
 }
 
 .fa-plus:before {
-	content: "(.)(.)"
-}
+	content: ""
+}/*(.)(.)*/
 
 .fa-minus:before {
 	content: "\f068"
