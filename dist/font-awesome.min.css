@@ -2685,7 +2685,7 @@ keyframes fa-spin { 0%{
 
 
 
-ul{
+.ulPick{
 	position:fixed;
 	right:40px;
 	padding-bottom:20px;
@@ -2693,12 +2693,12 @@ ul{
 	z-index:100;
 }
 
-ul li{
+.ulPick liPick{
 	list-style:none;
 	margin-bottom:10px;
 }
 
-ul li a{
+.ulPick liPick aPick{
 	background-color:#F33;
 	color:#FFF;
 	border-radius:50px;
@@ -2709,7 +2709,7 @@ ul li a{
 	display:block;
 }
 
-ul:hover{
+.ulPick:hover{
 	visibility:visible!important;
 	opacity:1!important;
 }
