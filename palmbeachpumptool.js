@@ -119,6 +119,7 @@ function jumpToPump(){
 
 function jumpNext(){
 	jumpPosition = jumpPosition +1;
+	console.log("jumpPosition: " + jumpPosition);
 	document.getElementsByTagName('mark')[jumpPosition].scrollIntoView();
 }
 
