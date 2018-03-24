@@ -1,13 +1,13 @@
 var s = document.createElement("script");
 s.type = "text/javascript";
-s.src = "https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/mark.js"; 
+s.src = "https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/mark.js";
 $("head").append(s);
 
 //<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 var s = document.createElement("link");
 s.type = "text/css";
 s.rel = 'stylesheet';
-s.href = "https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/font-awesome.min.css"; 
+s.href = "https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/font-awesome.min.css";
 $("head").append(s);
 
 var binanceAllTikersAPI = "https://www.binance.com/api/v1/ticker/allBookTickers";
@@ -38,7 +38,7 @@ function createTickerList(){
 	while (i < json_obj.length){
 		if(json_obj[i].symbol.includes(pair) && !json_obj[i].symbol.includes(pairUSDT)){
 			listTicker.push("("+ json_obj[i].symbol.replace(pair, "") + ")");
-		}		
+		}
 		i++;
 	}
 	console.log("List "+listTicker[0]);
@@ -54,7 +54,7 @@ function addJumpButton(){
 }
 
 function jumpToFirstCoin(){
-	// jump to first coin 
+	// jump to first coin
 	jumpPosition = 0;
 	document.getElementsByTagName('mark')[jumpPosition].scrollIntoView();
 }
@@ -67,9 +67,9 @@ function floatButton(){
 //	buttonFloat.innerHTML = "(.)(.)";
 //	buttonFloat.innerHTML = document.getElementsByTagName('mark')[0].textContent;
 	buttonFloat.addEventListener ("click", jumpToFirstCoin);
-	
+
 	var childElement = document.createElement("i");
-	childElement.className = "fa my-float"; //fa-plus 
+	childElement.className = "fa my-float"; //fa-plus
 	childElement.innerHTML = "(.)(.)";
 	buttonFloat.appendChild(childElement);
 	x.appendChild(buttonFloat);
@@ -80,15 +80,14 @@ function floatButtonPick(){
 	var x = document.getElementsByClassName("grid col-700")[0];
 	var button1 = document.createElement("a");
 	button1.className = "float2";
-	button1.setAttribute('href','#');
 	button1.addEventListener ("click", jumpToPump);
 	var child1 = document.createElement("i");
 	child1.className = "fa my-float";
-	
+
 	var ticker = document.getElementsByTagName('mark')[0].textContent;
 	ticker = ticker.replace("(", "");
 	ticker = ticker.replace(")", "");
-	
+
 	child1.innerHTML = ticker.toUpperCase();
 	button1.appendChild(child1);
 	x.appendChild(button1);
