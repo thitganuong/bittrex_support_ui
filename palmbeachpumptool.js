@@ -58,7 +58,8 @@ function floatButton(){
 	var x = document.getElementsByTagName("BODY")[0];
 	var buttonFloat = document.createElement("a");
 	buttonFloat.className = "float";
-	buttonFloat.setAttribute('href','#');
+	//buttonFloat.setAttribute('href','#');
+	buttonFloat.addEventListener ("click", jumpToFirstCoin);
 	
 	var childElement = document.createElement("i");
 	childElement.className = "fa fa-plus my-float";
