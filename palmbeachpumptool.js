@@ -22,7 +22,7 @@ function load() {
 	instance.mark(listCoin);
 	//addJumpButton();
 	floatButton();
-	floatButtonTest();
+	floatButtonPick();
 	//floatPickButton();
 };
 
@@ -73,7 +73,7 @@ function floatButton(){
 }
 
 
-function floatButtonTest(){
+function floatButtonPick(){
 	var x = document.getElementsByClassName("grid col-700")[0];
 	var button1 = document.createElement("a");
 	button1.className = "float2";
@@ -101,20 +101,6 @@ function jumpToPump(){
 }
 
 
-
-function floatPickButton(){
-	var x = document.getElementsByTagName("BODY")[0];
-	var buttonPickFloat = document.createElement("a");
-	buttonPickFloat.className = "float";
-	buttonPickFloat.innerHTML = document.getElementsByTagName('mark')[0].textContent;
-	//buttonFloat.setAttribute('href','#');
-	//buttonPickFloat.addEventListener ("click", jumpToFirstCoin);
-	
-	var childPickElement = document.createElement("i");
-	childPickElement.className = "fa fa-plus my-float-pick";
-	buttonPickFloat.appendChild(childPickElement);
-	x.appendChild(buttonPickFloat);
-}
 
 jQuery(window).load(function () {
 	load();
