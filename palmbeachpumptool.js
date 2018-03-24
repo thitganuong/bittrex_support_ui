@@ -62,7 +62,7 @@ function floatButton(){
 	var buttonFloat = document.createElement("a");
 	buttonFloat.className = "float";
 	//buttonFloat.setAttribute('href','#');
-	buttonFloat.innerHTML = "(.)(.)";
+//	buttonFloat.innerHTML = "(.)(.)";
 //	buttonFloat.innerHTML = document.getElementsByTagName('mark')[0].textContent;
 	buttonFloat.addEventListener ("click", jumpToFirstCoin);
 	
