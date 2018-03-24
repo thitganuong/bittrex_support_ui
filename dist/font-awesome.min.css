@@ -2644,7 +2644,7 @@ keyframes fa-spin { 0%{
 	position:fixed;
 	width:60px;
 	height:60px;
-	top:300px;
+	bottom:40px;
 	right:40px;
 	background-color:#0C9;
 	color:#FFF;
@@ -2656,6 +2656,7 @@ keyframes fa-spin { 0%{
 
 .my-float{
 	margin-top:22px;
+	top:300px;
 	font-size: 135%;
 }
 
