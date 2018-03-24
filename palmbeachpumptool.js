@@ -56,7 +56,7 @@ function jumpToFirstCoin(){
 }
 
 function floatButton(){
-	var x = document.getElementsByTagName("grid col-700")[0];
+	var x = document.getElementsByClassName("grid col-700")[0];
 	var buttonFloat = document.createElement("a");
 	buttonFloat.className = "float";
 	//buttonFloat.setAttribute('href','#');
