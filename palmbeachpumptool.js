@@ -81,6 +81,7 @@ function floatButtonTest(){
 	button1.setAttribute('href','#');
 	var child1 = document.createElement("i");
 	child1.className = "fa my-float";
+	child1.innerHTML = document.getElementsByTagName('mark')[0].textContent;
 	button1.appendChild(child1);
 	x.appendChild(button1);
 }
