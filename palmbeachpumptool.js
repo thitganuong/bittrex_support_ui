@@ -80,7 +80,7 @@ function floatButtonPick(){
 	var x = document.getElementsByClassName("grid col-700")[0];
 	var button1 = document.createElement("a");
 	button1.className = "float2";
-	button1.setAttribute('href','#');
+//	button1.setAttribute('href','#');
 	button1.addEventListener ("click", jumpToPump(0));
 	var child1 = document.createElement("i");
 	child1.className = "fa my-float";
@@ -139,7 +139,7 @@ function setTickerName(jumpPosition){
 	var url = document.getElementsByTagName('mark')[jumpPosition].children[0].href;
 	
 	var pickButton = document.getElementsByClassName("float2")[0];
-	button1.addEventListener ("click", jumpToPump(jumpPosition));
+	pickButton.addEventListener ("click", jumpToPump(jumpPosition));
 	
 	var button2 = document.getElementsByClassName('fa my-float');
 	button2[1].innerText = ticker.toUpperCase();
