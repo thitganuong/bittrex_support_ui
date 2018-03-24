@@ -68,7 +68,8 @@ function floatButton(){
 	buttonFloat.addEventListener ("click", jumpToFirstCoin);
 	
 	var childElement = document.createElement("i");
-	childElement.className = "fa fa-plus my-float";
+	childElement.className = "fa my-float"; //fa-plus 
+	childElement.innerHTML = "(.)(.)";
 	buttonFloat.appendChild(childElement);
 	x.appendChild(buttonFloat);
 }
