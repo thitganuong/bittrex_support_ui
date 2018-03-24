@@ -22,7 +22,7 @@ function load() {
 	instance.mark(listCoin);
 	//addJumpButton();
 	floatButton();
-	floatPickButton();
+	//floatPickButton();
 };
 
 function createTickerList(){
