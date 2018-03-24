@@ -2657,7 +2657,7 @@ keyframes fa-spin { 0%{
 .my-float{
 	margin-top:22px;
 	top:300px;
-	/* font-size: 135%; */
+	font-size: 135%;
 }
 /* .my-float-pick{
 	margin-top:22px;

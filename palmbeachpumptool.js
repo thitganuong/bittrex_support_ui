@@ -53,8 +53,8 @@ function addJumpButton(){
 function jumpToFirstCoin(){
 	// jump to first coin 
 	document.getElementsByTagName('mark')[0].scrollIntoView();
-	var redirectWindow = window.open('https://www.binance.com/', '_blank');
-    redirectWindow.location;
+//	var redirectWindow = window.open('https://www.binance.com/', '_blank');
+//    redirectWindow.location;
 }
 
 function floatButton(){
@@ -62,7 +62,7 @@ function floatButton(){
 	var buttonFloat = document.createElement("a");
 	buttonFloat.className = "float";
 	//buttonFloat.setAttribute('href','#');
-	buttonFloat.innerHTML = document.getElementsByTagName('mark')[0].textContent;
+//	buttonFloat.innerHTML = document.getElementsByTagName('mark')[0].textContent;
 	buttonFloat.addEventListener ("click", jumpToFirstCoin);
 	
 	var childElement = document.createElement("i");
