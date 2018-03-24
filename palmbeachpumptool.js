@@ -23,6 +23,7 @@ function load() {
 	//addJumpButton();
 	floatButton();
 	floatButtonPick();
+	floatButtonNext();
 	//floatPickButton();
 };
 
@@ -89,6 +90,21 @@ function floatButtonPick(){
 	child1.innerHTML = ticker.toUpperCase();
 	button1.appendChild(child1);
 	x.appendChild(button1);
+}
+
+function floatButtonNext(){
+	var x = document.getElementsByClassName("grid col-700")[0];
+	var button3 = document.createElement("a");
+	button3.className = "float3";
+	button3.setAttribute('href','#');
+//	button1.addEventListener ("click", jumpToPump);
+	var child3 = document.createElement("i");
+	child3.className = "fa my-float";
+
+	
+	child3.innerHTML = "";
+	button3.appendChild(child3);
+	x.appendChild(button3);
 }
 
 function jumpToPump(){
