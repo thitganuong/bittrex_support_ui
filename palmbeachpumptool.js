@@ -83,6 +83,10 @@ function floatButtonTest(){
 	var child1 = document.createElement("i");
 	child1.className = "fa my-float";
 	child1.innerHTML = document.getElementsByTagName('mark')[0].textContent;
+	var ticker = document.getElementsByTagName('mark')[0].textContent;
+	ticker = ticker.replace("(", "");
+	ticker = ticker.replace(")", "");
+	child1.setAttribute('href','https://www.binance.com/trade.html?symbol=' + ticker.toUpperCase() +'_BTC');
 	button1.appendChild(child1);
 	x.appendChild(button1);
 }
