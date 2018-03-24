@@ -81,7 +81,7 @@ function floatButtonPick(){
 	var button1 = document.createElement("a");
 	button1.className = "float2";
 	button1.setAttribute('href','#');
-	button1.addEventListener ("click", jumpToPump);
+	button1.addEventListener ("click", jumpToPump(0));
 	var child1 = document.createElement("i");
 	child1.className = "fa my-float";
 	
@@ -118,8 +118,8 @@ function floatButtonNext(){
 	x.appendChild(button4);
 }
 
-function jumpToPump(){
-	var ticker = document.getElementsByTagName('mark')[0].textContent;
+function jumpToPump(jumpPosition){
+	var ticker = document.getElementsByTagName('mark')[jumpPosition].textContent;
 	ticker = ticker.replace("(", "");
 	ticker = ticker.replace(")", "");
 	var url = 'https://www.binance.com/trade.html?symbol=' + ticker.toUpperCase() +'_BTC';
@@ -131,6 +131,18 @@ function jumpNext(){
 	jumpPosition = jumpPosition +1;
 	console.log("jumpPosition: " + jumpPosition);
 	document.getElementsByTagName('mark')[jumpPosition].scrollIntoView();
+}
+function setTickerName(jumpPosition){
+	var ticker = document.getElementsByTagName('mark')[jumpPosition].textContent;
+	ticker = ticker.replace("(", "");
+	ticker = ticker.replace(")", "");
+	var url = document.getElementsByTagName('mark')[jumpPosition].children[0].href;
+	
+	var pickButton = document.getElementsByClassName("float2")[0];
+	button1.addEventListener ("click", jumpToPump(jumpPosition));
+	
+	var button2 = document.getElementsByClassName('fa my-float');
+	button2[1].innerText = ticker.toUpperCase();
 }
 
 function jumpBack(){
