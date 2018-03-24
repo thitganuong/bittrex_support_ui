@@ -83,7 +83,6 @@ function floatButtonPick(){
 	var x = document.getElementsByClassName("grid col-700")[0];
 	var button1 = document.createElement("a");
 	button1.className = "float2";
-	button1.setAttribute('href','#');
 	button1.addEventListener ("click", jumpToPump(globaljumpPosition));
 	var child1 = document.createElement("i");
 	child1.className = "fa my-float";
