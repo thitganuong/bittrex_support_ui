@@ -2644,7 +2644,7 @@ keyframes fa-spin { 0%{
 	position:fixed;
 	width:60px;
 	height:60px;
-	bottom:40px;
+	top:300px;
 	right:40px;
 	background-color:#0C9;
 	color:#FFF;
