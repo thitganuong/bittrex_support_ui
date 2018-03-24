@@ -2682,3 +2682,34 @@ keyframes fa-spin { 0%{
     padding: .2em;
     background-color: #f1d858;
 }
+
+
+
+ul{
+	position:fixed;
+	right:40px;
+	padding-bottom:20px;
+	bottom:80px;
+	z-index:100;
+}
+
+ul li{
+	list-style:none;
+	margin-bottom:10px;
+}
+
+ul li a{
+	background-color:#F33;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+	width:60px;
+	height:60px;
+	display:block;
+}
+
+ul:hover{
+	visibility:visible!important;
+	opacity:1!important;
+}
