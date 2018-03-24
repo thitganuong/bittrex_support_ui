@@ -22,6 +22,7 @@ function load() {
 	instance.mark(listCoin);
 	//addJumpButton();
 	floatButton();
+	floatPickButton();
 };
 
 function createTickerList(){
@@ -64,6 +65,20 @@ function floatButton(){
 	var childElement = document.createElement("i");
 	childElement.className = "fa fa-plus my-float";
 	buttonFloat.appendChild(childElement);
+	x.appendChild(buttonFloat);
+}
+
+function floatPickButton(){
+	var x = document.getElementsByTagName("BODY")[0];
+	var buttonPickFloat = document.createElement("a");
+	buttonPickFloat.className = "float";
+	buttonPickFloat.innerHTML = document.getElementsByTagName('mark')[0].textContent;
+	//buttonFloat.setAttribute('href','#');
+	//buttonPickFloat.addEventListener ("click", jumpToFirstCoin);
+	
+	var childPickElement = document.createElement("i");
+	childPickElement.className = "fa fa-plus my-float-pick";
+	buttonPickFloat.appendChild(childElement);
 	x.appendChild(buttonFloat);
 }
 
