@@ -2659,11 +2659,11 @@ keyframes fa-spin { 0%{
 	top:300px;
 	font-size: 135%;
 }
-.my-float-pick{
+/* .my-float-pick{
 	margin-top:22px;
 	top:350px;
 	font-size: 135%;
-}
+} */
 
 .mark, mark {
     padding: .2em;
