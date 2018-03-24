@@ -97,12 +97,9 @@ function floatButtonNext(){
 	var x = document.getElementsByClassName("grid col-700")[0];
 	var button3 = document.createElement("a");
 	button3.className = "float3";
-	button3.setAttribute('href','#');
 	button3.addEventListener ("click", jumpNext);
 	var child3 = document.createElement("i");
 	child3.className = "fa my-float";
-
-	
 	child3.innerHTML = "⬇︎";
 	button3.appendChild(child3);
 	x.appendChild(button3);
