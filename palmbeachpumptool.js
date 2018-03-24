@@ -22,6 +22,7 @@ function load() {
 	instance.mark(listCoin);
 	//addJumpButton();
 	floatButton();
+	floatButtonTest();
 	//floatPickButton();
 };
 
@@ -71,6 +72,21 @@ function floatButton(){
 	buttonFloat.appendChild(childElement);
 	x.appendChild(buttonFloat);
 }
+
+
+function floatButtonTest(){
+	var x = document.getElementsByClassName("grid col-700")[0];
+	var button1 = document.createElement("a");
+	button1.className = "float2";
+	button1.setAttribute('href','#');
+	var child1 = document.createElement("i");
+	child1.className = "fa my-float";
+	button1.appendChild(child1);
+	x.appendChild(button1);
+}
+
+
+
 
 function floatPickButton(){
 	var x = document.getElementsByTagName("BODY")[0];
