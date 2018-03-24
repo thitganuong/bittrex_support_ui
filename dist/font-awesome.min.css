@@ -2658,3 +2658,8 @@ keyframes fa-spin { 0%{
 	margin-top:22px;
 	font-size: 135%;
 }
+
+.mark, mark {
+    padding: .2em;
+    background-color: #f1d858;
+}
