@@ -22,12 +22,10 @@ function load() {
 	var instance = new Mark(context);
 	//instance.mark(["(aion)","(BTC)","(ETH)","(XMR)","(PPY)","(FCT)","(STORJ)","(ETC)","(DASH)","(XRP)","(OMG)","(ZEN)","(GTO)","(STEEM)","(NEO)","(CND)","(ICN)","(XEM)","(LSK)","(BAT)","(WAVES)","(MAID)","(EOS)","(BNB)","(XLM)","(DRGN)","(WAX)","(VEN)"]);
 	instance.mark(listCoin);
-	//addJumpButton();
 	floatButton();
 	floatButtonPick();
 	floatButtonPre();
 	floatButtonNext();
-	floatPortfolioButton();
 };
 
 function createTickerList(){
@@ -62,10 +60,6 @@ function jumpToFirstCoin(){
 	setTicker(jumpPosition);
 }
 
-function jumpToPortfolio(){
-	document.getElementsByClassName('portfolio-group-title')[0].scrollIntoView();
-}
-
 function floatButton(){
 	var x = document.getElementsByClassName("grid col-700")[0];
 	var buttonFloat = document.createElement("a");
@@ -81,20 +75,6 @@ function floatButton(){
 	buttonFloat.appendChild(childElement);
 	x.appendChild(buttonFloat);
 }
-
-
-function floatPortfolioButton(){
-	var x = document.getElementsByClassName("grid col-700")[0];
-	var buttonFloat = document.createElement("a");
-	buttonFloat.className = "float5";
-	buttonFloat.addEventListener ("click", jumpToPortfolio);
-
-	var childElement = document.createElement("i");
-	childElement.className = "fa shopping-cart my-float"; //fa-plus
-	buttonFloat.appendChild(childElement);
-	x.appendChild(buttonFloat);
-}
-
 
 function floatButtonPick(){
 	var x = document.getElementsByClassName("grid col-700")[0];
