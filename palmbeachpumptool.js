@@ -151,7 +151,7 @@ function jumpToPump(){
 function jumpNext(){
 	jumpPosition = jumpPosition +1;
 	if(jumpPosition >= totalMarkNum){
-		jumpPosition = totalMarkNum;
+		jumpPosition = totalMarkNum-1;
 	}
 	console.log("jumpPosition: " + jumpPosition);
 	document.getElementsByTagName('mark')[jumpPosition].scrollIntoView();
