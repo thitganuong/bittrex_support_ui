@@ -27,7 +27,7 @@ function load() {
 	floatButtonPick();
 	floatButtonPre();
 	floatButtonNext();
-	//floatPickButton();
+	floatPortfolioButton();
 };
 
 function createTickerList(){
@@ -62,6 +62,10 @@ function jumpToFirstCoin(){
 	setTicker(jumpPosition);
 }
 
+function jumpToPortfolio(){
+	document.getElementsByClassName('portfolio-group-title')[0].scrollIntoView();
+}
+
 function floatButton(){
 	var x = document.getElementsByClassName("grid col-700")[0];
 	var buttonFloat = document.createElement("a");
@@ -74,6 +78,19 @@ function floatButton(){
 	var childElement = document.createElement("i");
 	childElement.className = "fa my-float"; //fa-plus
 	childElement.innerHTML = "(.)(.)";
+	buttonFloat.appendChild(childElement);
+	x.appendChild(buttonFloat);
+}
+
+
+function floatPortfolioButton(){
+	var x = document.getElementsByClassName("grid col-700")[0];
+	var buttonFloat = document.createElement("a");
+	buttonFloat.className = "float5";
+	buttonFloat.addEventListener ("click", jumpToPortfolio);
+
+	var childElement = document.createElement("i");
+	childElement.className = "fa shopping-cart my-float"; //fa-plus
 	buttonFloat.appendChild(childElement);
 	x.appendChild(buttonFloat);
 }
