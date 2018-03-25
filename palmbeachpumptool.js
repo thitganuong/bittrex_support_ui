@@ -121,8 +121,8 @@ function floatButtonPre(){
 	button3.className = "float3";
 	button3.addEventListener ("click", jumpBack);
 	var child3 = document.createElement("i");
-	child3.className = "fa my-float";
-	child3.innerHTML = "⬆︎";
+	child3.className = "fa fa-arrow-up my-float";
+	//child3.innerHTML = "⬆︎";
 	button3.appendChild(child3);
 	x.appendChild(button3);
 }
@@ -133,8 +133,8 @@ function floatButtonNext(){
 	button4.className = "float4";
 	button4.addEventListener ("click", jumpNext);
 	var child4 = document.createElement("i");
-	child4.className = "fa my-float";
-	child4.innerHTML = "⬇︎︎︎";
+	child4.className = "fa fa-arrow-down my-float";
+	//child4.innerHTML = "⬇︎︎︎";
 	button4.appendChild(child4);
 	x.appendChild(button4);
 }
