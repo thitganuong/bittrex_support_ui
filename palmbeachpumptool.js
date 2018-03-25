@@ -63,7 +63,7 @@ function jumpToFirstCoin(){
 }
 
 function jumpToPortfolio(){
-	document.getElementsByClassName('portfolio-group-title')[0].scrollIntoView();
+	document.getElementsByClassName('portfolio-group-title')[1].scrollIntoView();
 }
 
 function floatButton(){
@@ -90,7 +90,7 @@ function floatPortfolioButton(){
 	buttonFloat.addEventListener ("click", jumpToPortfolio);
 
 	var childElement = document.createElement("i");
-	childElement.className = "fa shopping-cart my-float"; //fa-plus
+	childElement.className = "fa fa-list my-float"; //fa-plus
 	buttonFloat.appendChild(childElement);
 	x.appendChild(buttonFloat);
 }
