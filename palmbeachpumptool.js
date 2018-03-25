@@ -59,6 +59,7 @@ function jumpToFirstCoin(){
 	// jump to first coin
 	jumpPosition = 0;
 	document.getElementsByTagName('mark')[jumpPosition].scrollIntoView();
+	setTicker(jumpPosition);
 }
 
 function floatButton(){
