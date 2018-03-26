@@ -171,4 +171,14 @@ jQuery(window).load(function () {
 	load();
 });
 
+window.onkeyup = function(e) {
+	   var key = e.keyCode ? e.keyCode : e.which;
+	   console.log("KEY: " + key);
+//	   if (key == 38) {
+//	       playerSpriteX += 10;
+//	   }else if (key == 40) {
+//	       playerSpriteX -= 10;
+//	   }
+	}
+
 console.log("Page is loaded");
