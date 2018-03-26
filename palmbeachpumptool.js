@@ -136,21 +136,21 @@ function jumpToPump(){
 function jumpNext(){
 	jumpPosition = jumpPosition +1;
 	if(jumpPosition >= totalMarkNum){
-		jumpPosition = totalMarkNum-1;
+		jumpPosition = totalMarkNum - 1;
 	}
-	console.log("jumpPosition: " + jumpPosition);
-	//document.getElementsByTagName('mark')[jumpPosition].scrollIntoView();
-	jumpToPosition(jumpPosition);
-	setTicker(jumpPosition);
+	jumpProcess(jumpPosition);
 }
 
 function jumpBack(){
-	jumpPosition = jumpPosition -1 ;
+	jumpPosition = jumpPosition - 1 ;
 	if(jumpPosition < 0){
 		jumpPosition = 0;
 	}
+	jumpProcess(jumpPosition);
+}
+
+function jumpProcess(jumpPosition){	
 	console.log("jumpPosition: " + jumpPosition);
-	//document.getElementsByTagName('mark')[jumpPosition].scrollIntoView();
 	jumpToPosition(jumpPosition);
 	setTicker(jumpPosition);
 }
