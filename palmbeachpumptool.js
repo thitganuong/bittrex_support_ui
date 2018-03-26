@@ -171,7 +171,7 @@ jQuery(window).load(function () {
 	load();
 });
 
-window.onkeyup = function(e) {
+window.onkeydown = function(e) {
 	   var key = e.keyCode ? e.keyCode : e.which;
 	   console.log("KEY: " + key);
 	   if (key == 69) {//jump to binance 
