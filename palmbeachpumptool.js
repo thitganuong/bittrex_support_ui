@@ -26,11 +26,13 @@ function load() {
 	totalMarkNum = document.getElementsByTagName('mark').length;
 	
 	//add buttons 
+	if(totalMarkNum > 0){
 		floatButton();
 		floatButtonPick();
 		floatButtonPre();
 		floatButtonNext();
 		floatPortfolioButton();
+	}
 };
 
 function getAllTickers(){
@@ -56,7 +58,6 @@ function getAllTickers(){
 
 function forceUpdateTickers(){
 	delete localStorage['listCoin'];
-	delete localStorage['listTicker'];
 	listCoin = createTickerList();
 }
 
@@ -69,18 +70,12 @@ function createTickerList(){
 	var pair = "BTC";
 	var pairUSDT = "USDT";
 	var listTicker = [];
-	if( localStorage['listTicker'] === undefined || localStorage['listTicker'] === null|| localStorage['listTicker'] == "null"){
-		while (i < json_obj.length){
-			if(json_obj[i].symbol.includes(pair) && !json_obj[i].symbol.includes(pairUSDT)){
-				listTicker.push("("+ json_obj[i].symbol.replace(pair, "") + ")");
-			}
-			i++;
+	while (i < json_obj.length){
+		if(json_obj[i].symbol.includes(pair) && !json_obj[i].symbol.includes(pairUSDT)){
+			listTicker.push("("+ json_obj[i].symbol.replace(pair, "") + ")");
 		}
-		localStorage['listTicker'] = listTicker;
-	} else {
-		listTicker = localStorage['listTicker'];
+		i++;
 	}
-
 	console.log("List coin count:"+json_obj.length);
 	return listTicker;
 }
