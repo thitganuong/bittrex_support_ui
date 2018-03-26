@@ -56,6 +56,11 @@ function getAllTickers(){
 	}
 }
 
+function forceUpdateTickers(){
+	delete localStorage['listCoin'];
+	getAllTickers();
+}
+
 function createTickerList(){
 	//get tickers from binance
 	getAllTickers();
@@ -203,12 +208,14 @@ jQuery(window).load(function () {
 window.onkeydown = function(e) {
 	   var key = e.keyCode ? e.keyCode : e.which;
 	   console.log("KEY: " + key);
-	   if (key == 69) {//jump to binance 
+	   if (key == 69) {//jump to binance  KEY [E]
 		   jumpToPump();
-	   }else if (key == 87) {//Back 
+	   }else if (key == 87) {//Back KEY [W]
 		   jumpBack();
-	   }else if (key == 83) {//Next  
+	   }else if (key == 83) {//Next  KEY [S]
 		   jumpNext();
+	   } else if(key == 85) {//Update list coin to cache KEY [U]
+		   forceUpdateTickers()
 	   }
 	}
 
