@@ -15,15 +15,12 @@ var jsonData = "[{\"symbol\":\"ETHBTC\",\"bidPrice\":\"0.06166400\",\"bidQty\":\
 var listCoin = createTickerList();
 var jumpPosition = 0;
 var totalMarkNum = 0;
-//var globalURL = "" ;
-//var globaljumpPosition = 0;
+var x = document.getElementsByClassName("grid col-700")[0];
 function load() {
-	//createTickerList();
 	var context = document.querySelector(".contt");
 	var instance = new Mark(context);
 	//instance.mark(["(aion)","(BTC)","(ETH)","(XMR)","(PPY)","(FCT)","(STORJ)","(ETC)","(DASH)","(XRP)","(OMG)","(ZEN)","(GTO)","(STEEM)","(NEO)","(CND)","(ICN)","(XEM)","(LSK)","(BAT)","(WAVES)","(MAID)","(EOS)","(BNB)","(XLM)","(DRGN)","(WAX)","(VEN)"]);
 	instance.mark(listCoin);
-	//addJumpButton();
 	floatButton();
 	floatButtonPick();
 	floatButtonPre();
@@ -49,14 +46,6 @@ function createTickerList(){
 	return listTicker;
 }
 
-function addJumpButton(){
-	var buttonLoad = document.createElement("button");
-	buttonLoad.innerHTML = "(.)(.)";
-	buttonLoad.className = "btn btn-default btn-toolbar";
-	buttonLoad.addEventListener ("click", jumpToFirstCoin);
-	document.getElementsByClassName('grid col-700')[0].appendChild(buttonLoad);
-}
-
 function jumpToFirstCoin(){
 	// jump to first coin
 	jumpPosition = 0;
@@ -69,24 +58,20 @@ function jumpToPortfolio(){
 }
 
 function floatButton(){
-	var x = document.getElementsByClassName("grid col-700")[0];
+	
 	var buttonFloat = document.createElement("a");
 	buttonFloat.className = "float";
-	//buttonFloat.setAttribute('href','#');
-//	buttonFloat.innerHTML = "(.)(.)";
-//	buttonFloat.innerHTML = document.getElementsByTagName('mark')[0].textContent;
 	buttonFloat.addEventListener ("click", jumpToFirstCoin);
 
 	var childElement = document.createElement("i");
 	childElement.className = "fa fa-plus my-float"; //fa-plus
-	//childElement.innerHTML = "(.)(.)";
 	buttonFloat.appendChild(childElement);
 	x.appendChild(buttonFloat);
 }
 
 
 function floatPortfolioButton(){
-	var x = document.getElementsByClassName("grid col-700")[0];
+//	var x = document.getElementsByClassName("grid col-700")[0];
 	var buttonFloat = document.createElement("a");
 	buttonFloat.className = "float5";
 	buttonFloat.addEventListener ("click", jumpToPortfolio);
@@ -99,7 +84,7 @@ function floatPortfolioButton(){
 
 
 function floatButtonPick(){
-	var x = document.getElementsByClassName("grid col-700")[0];
+//	var x = document.getElementsByClassName("grid col-700")[0];
 	var button1 = document.createElement("a");
 	button1.className = "float2";
 	button1.addEventListener ("click", jumpToPump);
@@ -116,7 +101,7 @@ function floatButtonPick(){
 }
 
 function floatButtonPre(){
-	var x = document.getElementsByClassName("grid col-700")[0];
+//	var x = document.getElementsByClassName("grid col-700")[0];
 	var button3 = document.createElement("a");
 	button3.className = "float3";
 	button3.addEventListener ("click", jumpBack);
@@ -128,7 +113,7 @@ function floatButtonPre(){
 }
 
 function floatButtonNext(){
-	var x = document.getElementsByClassName("grid col-700")[0];
+//	var x = document.getElementsByClassName("grid col-700")[0];
 	var button4 = document.createElement("a");
 	button4.className = "float4";
 	button4.addEventListener ("click", jumpNext);
@@ -174,10 +159,6 @@ function setTicker(jumpPosition){
 	tickerName = tickerName.replace(")", "");
 	var buttonJump = document.getElementsByClassName('fa my-float');
 	buttonJump[1].innerText = tickerName.toUpperCase();
-
-//	var url = 'https://www.binance.com/trade.html?symbol=' + tickerName.toUpperCase() +'_BTC';
-//	globaljumpPosition = jumpPosition;
-//	setURL(url);
 }
 
 jQuery(window).load(function () {
