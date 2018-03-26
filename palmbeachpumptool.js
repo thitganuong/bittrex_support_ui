@@ -154,11 +154,11 @@ function jumpBack(){
 }
 
 function setTicker(jumpPosition){
-	var tickerName = document.getElementsByTagName('mark')[jumpPosition].innerText;
-	tickerName = tickerName.replace("(", "");
-	tickerName = tickerName.replace(")", "");
+	var ticker = document.getElementsByTagName('mark')[jumpPosition].textContent;
+	ticker = ticker.replace("(", "");
+	ticker = ticker.replace(")", "");
 	var buttonJump = document.getElementsByClassName('fa my-float');
-	buttonJump[1].innerText = tickerName.toUpperCase();
+	buttonJump[1].innerText = ticker.toUpperCase();
 }
 
 jQuery(window).load(function () {
