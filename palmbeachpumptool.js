@@ -36,7 +36,8 @@ function load() {
 };
 
 function getAllTickers(){
-	if( localStorage['listCoin'] === undefined || localStorage['listCoin'] === null|| localStorage['listCoin'] == "null" || document.getElementsByClassName("page-title")[0].innerText == "Monthly Issues"){
+	//|| document.getElementsByClassName("page-title")[0].innerText == "Monthly Issues"
+	if( localStorage['listCoin'] === undefined || localStorage['listCoin'] === null|| localStorage['listCoin'] == "null"){
 		console.log("Binance list coin was null or at issue page. ");
 		var url = "https://www.binance.com/api/v1/ticker/allBookTickers"; 
 		var Httpreq = new XMLHttpRequest(); // a new request
