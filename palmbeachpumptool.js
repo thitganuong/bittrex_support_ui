@@ -26,13 +26,11 @@ function load() {
 	totalMarkNum = document.getElementsByTagName('mark').length;
 	
 	//add buttons 
-	if(totalMarkNum > 0){
 		floatButton();
 		floatButtonPick();
 		floatButtonPre();
 		floatButtonNext();
 		floatPortfolioButton();
-	}
 };
 
 function getAllTickers(){
