@@ -35,7 +35,7 @@ function load() {
 };
 
 function getAllTickers(){
-	if( localStorage['listCoin'] == undefined || localStorage['listCoin'] == null){
+	if( localStorage['listCoin'] === undefined || localStorage['listCoin'] === null|| localStorage['listCoin'] == "null"){
 		console.log("Binance list coin was null");
 		var url = "https://www.binance.com/api/v1/ticker/allBookTickers"; 
 		var Httpreq = new XMLHttpRequest(); // a new request
