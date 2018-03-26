@@ -180,7 +180,7 @@ function setTicker(jumpPosition){
 //	setURL(url);
 }
 
-jQuery(window).ready(function () {
+jQuery(window).load(function () {
 	load();
 });
 
