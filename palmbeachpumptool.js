@@ -58,7 +58,7 @@ function getAllTickers(){
 
 function forceUpdateTickers(){
 	delete localStorage['listCoin'];
-	getAllTickers();
+	listCoin = createTickerList();
 }
 
 function createTickerList(){
