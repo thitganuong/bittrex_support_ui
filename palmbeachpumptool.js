@@ -139,7 +139,8 @@ function jumpNext(){
 		jumpPosition = totalMarkNum-1;
 	}
 	console.log("jumpPosition: " + jumpPosition);
-	document.getElementsByTagName('mark')[jumpPosition].scrollIntoView();
+	//document.getElementsByTagName('mark')[jumpPosition].scrollIntoView();
+	jumpToPosition(jumpPosition);
 	setTicker(jumpPosition);
 }
 
@@ -149,8 +150,13 @@ function jumpBack(){
 		jumpPosition = 0;
 	}
 	console.log("jumpPosition: " + jumpPosition);
-	document.getElementsByTagName('mark')[jumpPosition].scrollIntoView();
+	//document.getElementsByTagName('mark')[jumpPosition].scrollIntoView();
+	jumpToPosition(jumpPosition);
 	setTicker(jumpPosition);
+}
+
+function jumpToPosition(jumpPosition){
+	document.getElementsByTagName('mark')[jumpPosition].scrollIntoView();
 }
 
 function setTicker(jumpPosition){
