@@ -216,6 +216,7 @@ window.onkeydown = function(e) {
 		   jumpNext();
 	   } else if(key == 85) {//Update list coin to cache KEY [U]
 		   forceUpdateTickers()
+		   console.log("Binance list updated");
 	   }
 	}
 
