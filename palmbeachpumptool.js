@@ -176,10 +176,10 @@ window.onkeyup = function(e) {
 	   console.log("KEY: " + key);
 	   if (key == 69) {//jump to binance 
 		   jumpToPump();
-	   }else if (key == 87) {//UP
-
-	   }else if (key == 83) {//Down 
-		   
+	   }else if (key == 87) {//Back 
+		   jumpBack();
+	   }else if (key == 83) {//Next  
+		   jumpNext();
 	   }
 	}
 
