@@ -35,23 +35,31 @@ function load() {
 };
 
 function getAllTickers(){
-	var url = "https://www.binance.com/api/v1/ticker/allBookTickers"; 
-	var Httpreq = new XMLHttpRequest(); // a new request
-	Httpreq.onreadystatechange = function() {
-	    if (this.readyState == 4 && this.status == 200) {
-	       // Typical action to be performed when the document is ready:
-	    		jsonData = Httpreq.responseText;//JSON.parse(Httpreq.responseText);
-	    }
-	};
-	Httpreq.open("GET",url,false);
-	Httpreq.send();
+	if( localStorage['listCoin'] == undefined || localStorage['listCoin'] == null){
+		console.log("Binance list coin was null");
+		var url = "https://www.binance.com/api/v1/ticker/allBookTickers"; 
+		var Httpreq = new XMLHttpRequest(); // a new request
+		Httpreq.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		       // Typical action to be performed when the document is ready:
+		    		jsonData = Httpreq.responseText;//JSON.parse(Httpreq.responseText);
+		    		localStorage['listCoin'] = jsonData;
+		    		console.log("New Binance list coin was cached");
+		    		return jsonData;
+		    }
+		};
+		Httpreq.open("GET",url,false);
+		Httpreq.send();
+	} else {
+		console.log("Binance list coin was cached, no need to fetch ");
+	}
 }
 
 function createTickerList(){
 	//get tickers from binance
 	getAllTickers();
 	//get tikers
-	var json_obj = JSON.parse(jsonData);
+	var json_obj = JSON.parse(localStorage['listCoin']);//JSON.parse(jsonData);
 	var i = 0;
 	var pair = "BTC";
 	var pairUSDT = "USDT";
@@ -62,7 +70,7 @@ function createTickerList(){
 		}
 		i++;
 	}
-	console.log("List "+listTicker[0]);
+	console.log("List coin count:"+json_obj.length);
 	return listTicker;
 }
 
