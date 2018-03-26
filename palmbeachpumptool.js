@@ -17,10 +17,7 @@ var listCoin = createTickerList();
 var jumpPosition = 0;
 var totalMarkNum = 0;
 var x = document.getElementsByClassName("grid col-700")[0];
-function load() {
-	//get tickers from binance
-	getAllTickers();
-	
+function load() {	
 	//add marks
 	var context = document.querySelector(".contt");
 	var instance = new Mark(context);
@@ -51,6 +48,8 @@ function getAllTickers(){
 }
 
 function createTickerList(){
+	//get tickers from binance
+	getAllTickers();
 	//get tikers
 	var json_obj = JSON.parse(jsonData);
 	var i = 0;
