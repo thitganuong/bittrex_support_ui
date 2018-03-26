@@ -58,6 +58,7 @@ function getAllTickers(){
 
 function forceUpdateTickers(){
 	delete localStorage['listCoin'];
+	delete localStorage['listTicker'];
 	listCoin = createTickerList();
 }
 
@@ -70,12 +71,18 @@ function createTickerList(){
 	var pair = "BTC";
 	var pairUSDT = "USDT";
 	var listTicker = [];
-	while (i < json_obj.length){
-		if(json_obj[i].symbol.includes(pair) && !json_obj[i].symbol.includes(pairUSDT)){
-			listTicker.push("("+ json_obj[i].symbol.replace(pair, "") + ")");
+	if( localStorage['listTicker'] === undefined || localStorage['listTicker'] === null|| localStorage['listTicker'] == "null"){
+		while (i < json_obj.length){
+			if(json_obj[i].symbol.includes(pair) && !json_obj[i].symbol.includes(pairUSDT)){
+				listTicker.push("("+ json_obj[i].symbol.replace(pair, "") + ")");
+			}
+			i++;
 		}
-		i++;
+		localStorage['listTicker'] = listTicker;
+	} else {
+		listTicker = localStorage['listTicker'];
 	}
+
 	console.log("List coin count:"+json_obj.length);
 	return listTicker;
 }
@@ -215,8 +222,9 @@ window.onkeydown = function(e) {
 	   }else if (key == 83) {//Next  KEY [S]
 		   jumpNext();
 	   } else if(key == 85) {//Update list coin to cache KEY [U]
-		   forceUpdateTickers()
-		   console.log("Binance list updated");
+		   console.log("Delete list coin.");
+		   forceUpdateTickers();
+		   console.log("Binance list updated.");
 	   }
 	}
 
