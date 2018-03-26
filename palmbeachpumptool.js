@@ -174,11 +174,13 @@ jQuery(window).load(function () {
 window.onkeyup = function(e) {
 	   var key = e.keyCode ? e.keyCode : e.which;
 	   console.log("KEY: " + key);
-//	   if (key == 38) {
-//	       playerSpriteX += 10;
-//	   }else if (key == 40) {
-//	       playerSpriteX -= 10;
-//	   }
+	   if (key == 69) {//jump to binance 
+		   jumpToPump();
+	   }else if (key == 87) {//UP
+
+	   }else if (key == 83) {//Down 
+		   
+	   }
 	}
 
 console.log("Page is loaded");
