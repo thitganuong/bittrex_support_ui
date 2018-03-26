@@ -40,7 +40,7 @@ function load() {
 function getAllTickers(){
 	var url = "https://www.binance.com/api/v1/ticker/allBookTickers"; 
 	var Httpreq = new XMLHttpRequest(); // a new request
-	xhttp.onreadystatechange = function() {
+	Httpreq.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	       // Typical action to be performed when the document is ready:
 	    		jsonData = Httpreq.responseText;//JSON.parse(Httpreq.responseText);
