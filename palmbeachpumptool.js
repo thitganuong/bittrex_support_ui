@@ -289,7 +289,7 @@ function buyNow(){
 	    // do something to response
 	    console.log(this.responseText);
 	};
-	var hash = CryptoJS.HmacSHA256("symbol=LTCBTC&side=BUY&type=LIMIT&timeInForce=GTC&quantity=1&price=0.1&recvWindow=5000&timestamp="+serverTime, Secret);
+	var hash = CryptoJS.HmacSHA256("symbol=LTCBTC&side=BUY&type=MARKET&quantity=1&recvWindow=6000000&timestamp="+serverTime, Secret);
 	//https://api.binance.com/api/v3/order?symbol=LTCBTC&side=BUY&type=LIMIT&quantity=1&price=0.1&recvWindow=5000&timestamp=1499827319559&signature=c8db56825ae71d6d79447849e617115f4a920fa2acdcab2b053c4b2838bd6b71'
 	var requestParam = "symbol=LTCBTC&side=BUY&type=MARKET&quantity=1&recvWindow=6000000&timestamp="+serverTime+'&signature=' + hash.toString();
 	console.log("Param: " + requestParam);
