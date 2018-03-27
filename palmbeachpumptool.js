@@ -4,11 +4,11 @@ s.src = "https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/mark.js";
 $("head").append(s);
 
 //<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-var s = document.createElement("link");
-s.type = "text/css";
-s.rel = 'stylesheet';
-s.href = "https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/font-awesome.min.css";
-$("head").append(s);
+//var s = document.createElement("link");
+//s.type = "text/css";
+//s.rel = 'stylesheet';
+//s.href = "https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/font-awesome.min.css";
+//$("head").append(s);
 
 var binanceAllTikersAPI = "https://www.binance.com/api/v1/ticker/allBookTickers";
 //var jsonData = "[{\"symbol\":\"ETHBTC\",\"bidPrice\":\"0.06166400\",\"bidQty\":\"54.65900000\",\"askPrice\":\"0.06171600\",\"askQty\":\"0.00100000\"}]";
