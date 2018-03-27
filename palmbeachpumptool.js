@@ -21,6 +21,7 @@ var priceText = "";
 var currentTickerName = "";
 var priceBTCPair = 0;
 var priceUSDPair = 0;
+var serverTime = "";
 function load() {	
 	//add marks
 	var context = document.querySelector(".contt");
@@ -263,17 +264,36 @@ function getTickerPricebyUSD(currentTickerName){
 	Httpreq.send();
 }
 
+function getServerTime(){
+	var url = "https://api.binance.com/api/v1/time"; 
+	var Httpreq = new XMLHttpRequest(); // a new request
+	Httpreq.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	       // Typical action to be performed when the document is ready:
+	    		serverTime = JSON.parse(Httpreq.responseText).serverTime;//JSON.parse(Httpreq.responseText);
+	    		return serverTime;
+	    }
+	};
+	Httpreq.open("GET",url,false);
+	Httpreq.send();
+}
+
 function buyNow(){
+	getServerTime();
 	var url = "https://api.binance.com/api/v3/order/test"; 
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST',url, true);
+	xhr.setRequestHeader("X-MBX-APIKEY", API_Key);
 	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	xhr.onload = function () {
 	    // do something to response
 	    console.log(this.responseText);
 	};
+	var hash = CryptoJS.HmacSHA256("symbol=LTCBTC&side=BUY&type=LIMIT&timeInForce=GTC&quantity=1&price=0.1&recvWindow=5000&timestamp="+serverTime, Secret);
 	//https://api.binance.com/api/v3/order?symbol=LTCBTC&side=BUY&type=LIMIT&quantity=1&price=0.1&recvWindow=5000&timestamp=1499827319559&signature=c8db56825ae71d6d79447849e617115f4a920fa2acdcab2b053c4b2838bd6b71'
-	xhr.send('symbol=NEOBTC&side=BUY&type=LIMIT&quantity=1&price=0.1&timestamp=1499827319559&signature=c8db56825ae71d6d79447849e617115f4a920fa2acdcab2b053c4b2838bd6b71');
+	var requestParam = "symbol=LTCBTC&side=BUY&type=LIMIT&timeInForce=GTC&quantity=1&price=0.1&recvWindow=5000&timestamp="+serverTime+'&signature=' + hash.toString()
+	console.log("Param: " + requestParam);
+	xhr.send(requestParam);
 }
 
 jQuery(window).load(function () {
