@@ -284,6 +284,9 @@ function buyNow(){
 		var url = "https://api.binance.com/api/v3/order/test"; 
 		var xhr = new XMLHttpRequest();
 		xhr.open('POST',url, true);
+		xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+		xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+		xhr.setRequestHeader('Access-Control-Allow-Headers', 'Content-Type');
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		xhr.setRequestHeader("X-MBX-APIKEY", API_Key);
 		xhr.onload = function () {
