@@ -2726,7 +2726,7 @@ keyframes fa-spin { 0%{
 }
 .label-container{
 	position:fixed;
-	bottom:48px;
+	top:383px;
 	right:105px;
 	display:table;
 	visibility: hidden;
