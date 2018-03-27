@@ -2706,6 +2706,8 @@ keyframes fa-spin { 0%{
 	box-shadow: 2px 2px 3px #999;
 }
 
+
+
 .my-float{
 	margin-top:22px;
 	top:300px;
@@ -2722,4 +2724,37 @@ keyframes fa-spin { 0%{
     background-color: #f1d858;
     border-radius: 30px;
 }
+.label-container{
+	position:fixed;
+	bottom:48px;
+	right:105px;
+	display:table;
+	visibility: hidden;
+}
 
+.label-text{
+	color:#FFF;
+	background:rgba(51,51,51,0.5);
+	display:table-cell;
+	vertical-align:middle;
+	padding:10px;
+	border-radius:3px;
+}
+
+.label-arrow{
+	display:table-cell;
+	vertical-align:middle;
+	color:#333;
+	opacity:0.5;
+}
+
+a.float2 + div.label-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float2:hover + div.label-container{
+  visibility: visible;
+  opacity: 1;
+}
