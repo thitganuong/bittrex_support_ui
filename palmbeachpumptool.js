@@ -226,8 +226,8 @@ function setTicker(jumpPosition){
 }
 function getPriceInfo(currentTickerName){
 	var btcpair = currentTickerName +"BTC: "+ getTickerPricebyBTC(currentTickerName);
-	var usdpair = currentTickerName +"USD: "+ getTickerPricebyUSD(currentTickerName);
-	var priceString = btcpair+ "\n" + usdpair;
+//	var usdpair = currentTickerName +"USD: "+ getTickerPricebyUSD(currentTickerName);
+	var priceString = btcpair;//+ "\n" + usdpair;
 	return priceString;
 }
 
