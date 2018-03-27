@@ -152,6 +152,7 @@ function floatButtonPick(){
 	labelContainer.appendChild(labelText);
 	labelContainer.appendChild(labelArrow);
 	x.appendChild(labelContainer);
+	getTickerPricebyBTC(ticker.toUpperCase());
 		
 }
 
