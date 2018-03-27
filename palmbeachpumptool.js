@@ -17,6 +17,7 @@ var listCoin = createTickerList();
 var jumpPosition = 0;
 var totalMarkNum = 0;
 var x = document.getElementsByClassName("grid col-700")[0];
+var priceText = "";
 function load() {	
 	//add marks
 	var context = document.querySelector(".contt");
@@ -133,6 +134,22 @@ function floatButtonPick(){
 	child1.innerHTML = ticker.toUpperCase();
 	button1.appendChild(child1);
 	x.appendChild(button1);
+	
+//	<div class="label-container">
+//		<div class="label-text">Feedback</div>
+//		<i class="fa fa-play label-arrow"></i>
+//	</div>
+	var labelContainer = document.createElement("div");
+		labelContainer.className = "label-container";
+	var labelText = document.createElement("div");
+		labelText.className = "label-text";
+		labelText.innerHTML = priceText;
+	var labelArrow = document.createElement("i");
+		labelArrow.className = "fa fa-play label-arrow";
+	labelContainer.appendChild(labelText);
+	labelContainer.appendChild(labelArrow);
+	x.appendChild(labelContainer);
+		
 }
 
 function floatButtonPre(){
