@@ -18,6 +18,9 @@ var jumpPosition = 0;
 var totalMarkNum = 0;
 var x = document.getElementsByClassName("grid col-700")[0];
 var priceText = "";
+var currentTickerName = "";
+var priceBTCPair = 0;
+var priceUSDPair = 0;
 function load() {	
 	//add marks
 	var context = document.querySelector(".contt");
@@ -217,6 +220,43 @@ function setTicker(jumpPosition){
 	ticker = ticker.replace(")", "");
 	var buttonJump = document.getElementsByClassName('fa my-float');
 	buttonJump[1].innerText = ticker.toUpperCase();
+	currentTickerName = ticker.toUpperCase();
+	//set price view for priceText
+	priceText = getPriceInfo(currentTickerName);
+}
+function getPriceInfo(currentTickerName){
+	var btcpair = currentTickerName +"BTC: "+ getTickerPricebyBTC(currentTickerName);
+	var usdpair = currentTickerName +"USD: "+ getTickerPricebyUSD(currentTickerName);
+	var priceString = btcpair+ "\n" + usdpair;
+	return priceString;
+}
+
+function getTickerPricebyBTC(currentTickerName){
+	var url = "https://api.binance.com/api/v1/ticker/price?symbol="; 
+	var Httpreq = new XMLHttpRequest(); // a new request
+	Httpreq.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	       // Typical action to be performed when the document is ready:
+	    		priceBTCPair = JSON.parse(Httpreq.responseText).price;//JSON.parse(Httpreq.responseText);
+	    		return priceBTCPair;
+	    }
+	};
+	Httpreq.open("GET",url + currentTickerName+ "BTC" ,false);
+	Httpreq.send();
+}
+
+function getTickerPricebyUSD(currentTickerName){
+	var url = "https://api.binance.com/api/v1/ticker/price?symbol="; 
+	var Httpreq = new XMLHttpRequest(); // a new request
+	Httpreq.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	       // Typical action to be performed when the document is ready:
+	    		priceUSDPair = JSON.parse(Httpreq.responseText).price;//JSON.parse(Httpreq.responseText);
+	    		return priceBTCPair;
+	    }
+	};
+	Httpreq.open("GET",url + currentTickerName+ "USDT" ,false);
+	Httpreq.send();
 }
 
 jQuery(window).load(function () {
