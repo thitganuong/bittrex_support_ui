@@ -239,7 +239,7 @@ function getTickerPricebyBTC(currentTickerName){
 	    if (this.readyState == 4 && this.status == 200) {
 	       // Typical action to be performed when the document is ready:
 	    		priceBTCPair = JSON.parse(Httpreq.responseText).price;//JSON.parse(Httpreq.responseText);
-	    		document.getElementsByClassName('label-text')[0].innerText =  priceBTCPair +" BTC: ";
+	    		document.getElementsByClassName('label-text')[0].innerText =  priceBTCPair +" BTC";
 	    		return priceBTCPair;
 	    }
 	};
