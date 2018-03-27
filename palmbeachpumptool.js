@@ -153,7 +153,7 @@ function floatButtonPick(){
 	labelContainer.appendChild(labelArrow);
 	x.appendChild(labelContainer);
 	getTickerPricebyBTC(ticker.toUpperCase());
-		
+	getTickerPricebyUSD(ticker.toUpperCase());
 }
 
 function floatButtonPre(){
@@ -225,6 +225,7 @@ function setTicker(jumpPosition){
 	//set price view for priceText
 	//priceText = getPriceInfo(currentTickerName);
 	getTickerPricebyBTC(currentTickerName);
+	getTickerPricebyUSD(currentTickerName);
 }
 function getPriceInfo(currentTickerName){
 	var btcpair = currentTickerName +"BTC: "+ getTickerPricebyBTC(currentTickerName);
@@ -255,6 +256,7 @@ function getTickerPricebyUSD(currentTickerName){
 	    if (this.readyState == 4 && this.status == 200) {
 	       // Typical action to be performed when the document is ready:
 	    		priceUSDPair = JSON.parse(Httpreq.responseText).price;//JSON.parse(Httpreq.responseText);
+	    		document.getElementsByClassName('label-text')[0].innerText =  priceBTCPair +" BTC\n"+ priceUSDPair + " $";
 	    		return priceBTCPair;
 	    }
 	};
