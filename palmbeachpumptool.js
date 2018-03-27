@@ -241,7 +241,7 @@ function getTickerPricebyBTC(currentTickerName){
 	    if (this.readyState == 4 && this.status == 200) {
 	       // Typical action to be performed when the document is ready:
 	    		priceBTCPair = JSON.parse(Httpreq.responseText).price;//JSON.parse(Httpreq.responseText);
-	    		document.getElementsByClassName('label-text')[0].innerText =  priceBTCPair +" BTC";
+	    		document.getElementsByClassName('label-text')[0].innerText =  priceBTCPair +"Ƀ";
 	    		return priceBTCPair;
 	    }
 	};
@@ -256,7 +256,7 @@ function getTickerPricebyUSD(currentTickerName){
 	    if (this.readyState == 4 && this.status == 200) {
 	       // Typical action to be performed when the document is ready:
 	    		priceUSDPair = JSON.parse(Httpreq.responseText).price;//JSON.parse(Httpreq.responseText);
-	    		document.getElementsByClassName('label-text')[0].innerText =  priceBTCPair +" BTC\n"+ priceUSDPair + " $";
+	    		document.getElementsByClassName('label-text')[0].innerText =  priceBTCPair +"Ƀ\n"+ priceUSDPair + "$";
 	    		return priceBTCPair;
 	    }
 	};
