@@ -280,20 +280,49 @@ function getServerTime(){
 
 function buyNow(){
 	getServerTime();
-	var url = "https://api.binance.com/api/v3/order/test"; 
-	var xhr = new XMLHttpRequest();
-	xhr.open('POST',url, true);
-	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');//application/x-www-form-urlencoded
-	xhr.setRequestHeader("X-MBX-APIKEY", API_Key);
-	xhr.onload = function () {
-	    // do something to response
-	    console.log(this.responseText);
-	};
 	var hash = CryptoJS.HmacSHA256("symbol=LTCBTC&side=BUY&type=MARKET&quantity=1&recvWindow=6000000&timestamp="+serverTime, Secret);
-	var requestParam = "symbol=LTCBTC&side=BUY&type=MARKET&quantity=1&recvWindow=6000000&timestamp="+serverTime+'&signature=' + hash.toString();
-	console.log("Param: " + requestParam);
-	xhr.send(requestParam);
+	var url = "https://api.binance.com/api/v3/order/test"; 
+	var product = "symbol=LTCBTC&side=BUY&type=MARKET&quantity=1&recvWindow=6000000&timestamp="+serverTime+'&signature=' + hash.toString(); 
+//	    JSON.stringify({
+//	    		symbol: "LTCBTC",
+//	    		side: "BUY",
+//	    		type: "MARKET",
+//	    		quantity: 1,
+//	    		recvWindow:6000000,
+//	    		timestamp:serverTime,
+//	    		signature: hash.toString()
+//	    });
+
+	$.ajax({
+	    URL: url,
+	    headers: {
+	        'X-MBX-APIKEY':API_Key,
+	        'Content-Type':'application/x-www-form-urlencoded'
+	    },
+	    type: 'POST',
+	    data: product,
+	    success: function (data, status, xhr) {
+	    	console.log(xhr);
+	    },
+	    error: function (xhr, status, error) {
+	    	console.log('Update Error occurred - ' + error);
+	    }
+	});
 }
+//	var xhr = new XMLHttpRequest();
+//	xhr.open('POST',url, true);
+//	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');//application/x-www-form-urlencoded
+//	xhr.setRequestHeader("X-MBX-APIKEY", API_Key);
+//	xhr.onload = function () {
+//	    // do something to response
+//	    console.log(this.responseText);
+//	};
+//	var hash = CryptoJS.HmacSHA256("symbol=LTCBTC&side=BUY&type=MARKET&quantity=1&recvWindow=6000000&timestamp="+serverTime, Secret);
+//	var requestParam = "symbol=LTCBTC&side=BUY&type=MARKET&quantity=1&recvWindow=6000000&timestamp="+serverTime+'&signature=' + hash.toString();
+//	console.log("Param: " + requestParam);
+//	xhr.send(requestParam);
+	
+//}
 
 jQuery(window).load(function () {
 	load();
