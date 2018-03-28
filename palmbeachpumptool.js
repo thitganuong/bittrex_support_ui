@@ -280,48 +280,53 @@ function getServerTime(){
 
 function buyNow(){
 	getServerTime();
-	var hash = CryptoJS.HmacSHA256("symbol=LTCBTC&side=BUY&type=MARKET&quantity=1&recvWindow=6000000&timestamp="+serverTime, Secret);
+	//var hash = CryptoJS.HmacSHA256("symbol=LTCBTC&side=BUY&type=MARKET&quantity=1&recvWindow=6000000&timestamp="+serverTime, Secret);
 	var url = "https://api.binance.com/api/v3/order/test"; 
-	var product = "symbol=LTCBTC&side=BUY&type=MARKET&quantity=1&recvWindow=6000000&timestamp="+serverTime+'&signature=' + hash.toString(); 
-//	    JSON.stringify({
-//	    		symbol: "LTCBTC",
-//	    		side: "BUY",
-//	    		type: "MARKET",
-//	    		quantity: 1,
-//	    		recvWindow:6000000,
-//	    		timestamp:serverTime,
-//	    		signature: hash.toString()
-//	    });
-
-	$.ajax({
-	    URL: url,
-	    headers: {
-	        'X-MBX-APIKEY':API_Key,
-	        'Content-Type':'application/x-www-form-urlencoded'
-	    },
-	    type: 'POST',
-	    data: product,
-	    success: function (data, status, xhr) {
-	    	console.log(xhr);
-	    },
-	    error: function (xhr, status, error) {
-	    	console.log('Update Error occurred - ' + error);
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST',url, true);
+	xhr.setRequestHeader("X-MBX-APIKEY", API_Key);
+	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');//application/x-www-form-urlencoded
+	xhr.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	       // Typical action to be performed when the document is ready:
+//	    		serverTime = JSON.parse(Httpreq.responseText).serverTime;//JSON.parse(Httpreq.responseText);
+//	    		return serverTime;
+	    	 	console.log(this.responseText);
 	    }
-	});
-}
-//	var xhr = new XMLHttpRequest();
-//	xhr.open('POST',url, true);
-//	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');//application/x-www-form-urlencoded
-//	xhr.setRequestHeader("X-MBX-APIKEY", API_Key);
-//	xhr.onload = function () {
-//	    // do something to response
-//	    console.log(this.responseText);
-//	};
-//	var hash = CryptoJS.HmacSHA256("symbol=LTCBTC&side=BUY&type=MARKET&quantity=1&recvWindow=6000000&timestamp="+serverTime, Secret);
-//	var requestParam = "symbol=LTCBTC&side=BUY&type=MARKET&quantity=1&recvWindow=6000000&timestamp="+serverTime+'&signature=' + hash.toString();
-//	console.log("Param: " + requestParam);
-//	xhr.send(requestParam);
+	};
+	var orderParam = "symbol=LTCBTC&side=BUY&type=MARKET&quantity=1&recvWindow=6000000&timestamp="+serverTime; 
+	var hash = CryptoJS.HmacSHA256(orderParam, Secret);// hash info with secretkey
+	var requestParam = orderParam +'&signature=' + hash.toString();//sign then request POST 
+	console.log("Param: " + requestParam);
+	xhr.send(requestParam);
 	
+}
+//var product = "symbol=LTCBTC&side=BUY&type=MARKET&quantity=1&recvWindow=6000000&timestamp="+serverTime+'&signature=' + hash.toString(); 
+//JSON.stringify({
+//symbol: "LTCBTC",
+//side: "BUY",
+//type: "MARKET",
+//quantity: 1,
+//recvWindow:6000000,
+//timestamp:serverTime,
+//signature: hash.toString()
+//});
+//
+//$.ajax({
+//URL: url,
+//headers: {
+//'X-MBX-APIKEY':API_Key,
+//'Content-Type':'application/x-www-form-urlencoded'
+//},
+//type: 'POST',
+//data: product,
+//success: function (data, status, xhr) {
+//console.log(xhr);
+//},
+//error: function (xhr, status, error) {
+//console.log('Update Error occurred - ' + error);
+//}
+//});
 //}
 
 jQuery(window).load(function () {
