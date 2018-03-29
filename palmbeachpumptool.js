@@ -23,7 +23,7 @@ var priceBTCPair = 0;
 var priceUSDPair = 0;
 var serverTime = "";
 
-load();
+
 function load() {	
 	//add marks
 	var context = document.querySelector(".contt");
@@ -1748,3 +1748,4 @@ var CryptoJS = CryptoJS || function(h, s) {
 
 })));
 
+load();
