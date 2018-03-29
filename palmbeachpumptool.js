@@ -22,6 +22,8 @@ var currentTickerName = "";
 var priceBTCPair = 0;
 var priceUSDPair = 0;
 var serverTime = "";
+
+load();
 function load() {	
 	//add marks
 	var context = document.querySelector(".contt");
@@ -327,7 +329,7 @@ function buyNow(){
 //}
 
 jQuery(window).load(function () {
-	load();
+	//load();
 });
 
 window.onkeydown = function(e) {
