@@ -1113,7 +1113,7 @@
 var s = document.createElement("link");
 s.type = "text/css";
 s.rel = 'stylesheet';
-s.href = "https://rawgit.com/thitganuong/bittrex_support_ui/master/dist/font-awesome.min.css";
+s.href = "https://cdn.rawgit.com/thitganuong/bittrex_support_ui/d8aa04e9/dist/font-awesome.min.css";
 $("head").append(s);
 
 var binanceAllTikersAPI = "https://www.binance.com/api/v1/ticker/allBookTickers";
