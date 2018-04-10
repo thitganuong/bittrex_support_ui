@@ -1206,7 +1206,6 @@ function jumpToPortfolio(){
 }
 
 function floatButton(){
-	
 	var buttonFloat = document.createElement("a");
 	buttonFloat.className = "float";
 	buttonFloat.addEventListener ("click", jumpToFirstCoin);
@@ -1215,6 +1214,17 @@ function floatButton(){
 	childElement.className = "fa fa-plus my-float"; //fa-plus
 	buttonFloat.appendChild(childElement);
 	x.appendChild(buttonFloat);
+	if(autoSend != undefined){
+		if(autoSend){ 
+			var coinText = document.getElementsByTagName('mark')[0].textContent;
+			coinText = coinText.replace("(", "");
+			coinText = coinText.replace(")", "")
+			sendMessage_Shark_tank_home_signal(coinText);
+			sendMessage_Shark_UX_Signal(coinText);		
+			sendMessage_Shark_tank_JP_Signal(coinText);
+			sendMessage_Shark_Tank_FU_Signal(coinText);
+		}
+	}
 }
 
 
@@ -1438,6 +1448,66 @@ jQuery(window).load(function () {
 	//load();
 });
 
+
+function sendMessage_Shark_UX_Signal(coinText){
+	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
+	if(coinText != undefined && coinText != "" && coinText != null ){
+		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_UX_Signal + "&text=" + coinText; 
+		var Httpreq = new XMLHttpRequest(); // a new request
+		Httpreq.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		    		console.log("Shark_UX_Signal: " + coinText);
+		    }
+		};
+		Httpreq.open("GET",url,false);
+		Httpreq.send();
+	}
+}
+
+function sendMessage_Shark_tank_home_signal(coinText){
+	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
+	if(coinText != undefined && coinText != "" && coinText != null ){
+		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_tank_home_signal + "&text=" + coinText; 
+		var Httpreq = new XMLHttpRequest(); // a new request
+		Httpreq.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		    		console.log("Shark_tank_home_signal:" + coinText);
+		    }
+		};
+		Httpreq.open("GET",url,false);
+		Httpreq.send();
+	}
+}
+function sendMessage_Shark_tank_JP_Signal(coinText){
+	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
+	if(coinText != undefined && coinText != "" && coinText != null ){
+		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_tank_JP_Signal + "&text=" + coinText; 
+		var Httpreq = new XMLHttpRequest(); // a new request
+		Httpreq.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		    		console.log("Shark_tank_JP_Signal: " + coinText);
+		    }
+		};
+		Httpreq.open("GET",url,false);
+		Httpreq.send();
+	}
+}
+function sendMessage_Shark_Tank_FU_Signal(coinText){
+	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
+	if(coinText != undefined && coinText != "" && coinText != null ){
+		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_Tank_FU_Signal + "&text=" + coinText; 
+		var Httpreq = new XMLHttpRequest(); // a new request
+		Httpreq.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		    		console.log("Shark_Tank_FU_Signal: " + coinText);
+		    }
+		};
+		Httpreq.open("GET",url,false);
+		Httpreq.send();
+	}
+}
+
+
 window.onkeydown = function(e) {
 	   var key = e.keyCode ? e.keyCode : e.which;
 	   console.log("KEY: " + key);
@@ -1447,11 +1517,19 @@ window.onkeydown = function(e) {
 		   jumpBack();
 	   }else if (key == 83) {//Next  KEY [S]
 		   jumpNext();
-	   } else if(key == 85) {//Update list coin to cache KEY [U]
+	   }else if (key == 84){//Send message to group
+			var coinText = document.getElementsByTagName('mark')[0].textContent;
+			coinText = coinText.replace("(", "");
+			coinText = coinText.replace(")", "")
+			sendMessage_Shark_tank_home_signal(coinText);
+			sendMessage_Shark_UX_Signal(coinText);		
+			sendMessage_Shark_tank_JP_Signal(coinText);
+			sendMessage_Shark_Tank_FU_Signal(coinText);
+	   }else if(key == 85) {//Update list coin to cache KEY [U]
 		   console.log("Delete list coin.");
 		   forceUpdateTickers();
 		   console.log("Binance list updated.");
-	   }
+	   } 
 	}
 load();
 console.log("Page is loaded");
