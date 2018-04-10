@@ -1,3 +1,5 @@
+var d = new Date();
+var n = d.getTime();	
 /*!***************************************************
 * mark.js v8.11.1
 * https://markjs.io/
@@ -1214,15 +1216,16 @@ function floatButton(){
 	childElement.className = "fa fa-plus my-float"; //fa-plus
 	buttonFloat.appendChild(childElement);
 	x.appendChild(buttonFloat);
+	console.log("Load pick button: " +  (n -  getTime())/1000);
 	if(typeof(autoSend) !== "undefined"){
 		if(autoSend){ 
 			var coinText = document.getElementsByTagName('mark')[0].textContent;
 			coinText = coinText.replace("(", "");
 			coinText = coinText.replace(")", "")
-			sendMessage_Shark_tank_home_signal(coinText);
-			sendMessage_Shark_UX_Signal(coinText);		
-			sendMessage_Shark_tank_JP_Signal(coinText);
-			sendMessage_Shark_Tank_FU_Signal(coinText);
+			sendMessage_Shark_tank_home_signal(coinText, getTime());
+			sendMessage_Shark_UX_Signal(coinText,getTime());	
+			sendMessage_Shark_tank_JP_Signal(coinText,getTime());
+			sendMessage_Shark_Tank_FU_Signal(coinText,getTime());
 			
 			getDetailPricebyBTC(coinText);
 		}
@@ -1258,7 +1261,7 @@ function floatButtonPick(){
 	child1.innerHTML = ticker.toUpperCase();
 	button1.appendChild(child1);
 	x.appendChild(button1);
-	
+	console.log("Load jump pick button: " +  (n -  getTime())/1000);
 //	<div class="label-container">
 //		<div class="label-text">Feedback</div>
 //		<i class="fa fa-play label-arrow"></i>
@@ -1478,10 +1481,10 @@ function randomText(){
 	return rand; 
 } 
 
-function sendMessage_Shark_UX_Signal(coinText){
+function sendMessage_Shark_UX_Signal(coinText, time){
 	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
 	if(coinText != undefined && coinText != "" && coinText != null ){
-		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_UX_Signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+"_BTC" +randomText(); 
+		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_UX_Signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+"_BTC" +randomText()+ " (" + (time-getTime()/1000)+"s" + ")"; ; 
 		var Httpreq = new XMLHttpRequest(); // a new request
 		Httpreq.onreadystatechange = function() {
 		    if (this.readyState == 4 && this.status == 200) {
@@ -1493,11 +1496,11 @@ function sendMessage_Shark_UX_Signal(coinText){
 	}
 }
 
-function sendMessage_Shark_tank_home_signal(coinText){
+function sendMessage_Shark_tank_home_signal(coinText, time){
 	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
 	if(coinText != undefined && coinText != "" && coinText != null ){
 		//'https://www.binance.com/trade.html?symbol=' + tickerString.toUpperCase() +'_BTC'
-		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_tank_home_signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+"_BTC"+ randomText(); 
+		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_tank_home_signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+"_BTC"+ randomText()+ " (" + (time-getTime()/1000)+"s" + ")"; ; 
 		var Httpreq = new XMLHttpRequest(); // a new request
 		Httpreq.onreadystatechange = function() {
 		    if (this.readyState == 4 && this.status == 200) {
@@ -1508,10 +1511,10 @@ function sendMessage_Shark_tank_home_signal(coinText){
 		Httpreq.send();
 	}
 }
-function sendMessage_Shark_tank_JP_Signal(coinText){
+function sendMessage_Shark_tank_JP_Signal(coinText, time){
 	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
 	if(coinText != undefined && coinText != "" && coinText != null ){
-		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_tank_JP_Signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+"_BTC" + randomText(); 
+		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_tank_JP_Signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+"_BTC" + randomText()+ " (" + (time-getTime()/1000)+"s" + ")"; 
 		var Httpreq = new XMLHttpRequest(); // a new request
 		Httpreq.onreadystatechange = function() {
 		    if (this.readyState == 4 && this.status == 200) {
@@ -1522,10 +1525,10 @@ function sendMessage_Shark_tank_JP_Signal(coinText){
 		Httpreq.send();
 	}
 }
-function sendMessage_Shark_Tank_FU_Signal(coinText){
+function sendMessage_Shark_Tank_FU_Signal(coinText, time){
 	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
 	if(coinText != undefined && coinText != "" && coinText != null ){
-		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_Tank_FU_Signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+ "_BTC" + randomText(); 
+		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_Tank_FU_Signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+ "_BTC" + randomText()+ " (" + (time-getTime()/1000)+"s" + ")"; ; 
 		var Httpreq = new XMLHttpRequest(); // a new request
 		Httpreq.onreadystatechange = function() {
 		    if (this.readyState == 4 && this.status == 200) {
@@ -1552,6 +1555,12 @@ function sendMessageDetailPrice(coinText, max, min, current, groupID){
 	Httpreq.send();
 }
 
+function getTime(){
+	var t = new Date();
+	var s = t.getTime();
+	return s;
+}
+
 
 window.onkeydown = function(e) {
 	   var key = e.keyCode ? e.keyCode : e.which;
@@ -1567,10 +1576,10 @@ window.onkeydown = function(e) {
 				var coinText = document.getElementsByTagName('mark')[0].textContent;
 				coinText = coinText.replace("(", "");
 				coinText = coinText.replace(")", "")
-				sendMessage_Shark_tank_home_signal(coinText);
-				sendMessage_Shark_UX_Signal(coinText);		
-				sendMessage_Shark_tank_JP_Signal(coinText);
-				sendMessage_Shark_Tank_FU_Signal(coinText);
+				sendMessage_Shark_tank_home_signal(coinText, getTime());
+				sendMessage_Shark_UX_Signal(coinText, getTime());		
+				sendMessage_Shark_tank_JP_Signal(coinText, getTime());
+				sendMessage_Shark_Tank_FU_Signal(coinText, getTime());
 				
 				getDetailPricebyBTC(coinText);
 		   }
