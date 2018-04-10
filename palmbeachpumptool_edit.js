@@ -1223,6 +1223,8 @@ function floatButton(){
 			sendMessage_Shark_UX_Signal(coinText);		
 			sendMessage_Shark_tank_JP_Signal(coinText);
 			sendMessage_Shark_Tank_FU_Signal(coinText);
+			
+			getDetailPricebyBTC(coinText);
 		}
 	}
 }
@@ -1382,6 +1384,28 @@ function getTickerPricebyUSD(currentTickerName){
 	Httpreq.send();
 }
 
+function getDetailPricebyBTC(currentTickerName){
+	var url = "https://api.binance.com/api/v1/klines?interval=5m&limit=1&symbol="; 
+	var Httpreq = new XMLHttpRequest(); // a new request
+	Httpreq.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	    		var detailPrice = JSON.parse(Httpreq.responseText);//JSON.parse(Httpreq.responseText);
+	    		var detailPriceMax = detailPrice[0][2];
+	    		var detailPriceMin = detailPrice[0][3];
+	    		var detailPriceCurrent = detailPrice[0][4];
+	    		console.log("Param: " + detailPriceMax+ " " + detailPriceMin+ " " +detailPriceCurrent);
+	    		sendMessageDetailPrice(currentTickerName, detailPriceMax, detailPriceMin, detailPriceCurrent, Shark_tank_home_signal);
+	    		sendMessageDetailPrice(currentTickerName, detailPriceMax, detailPriceMin, detailPriceCurrent, Shark_UX_Signal);
+	    		sendMessageDetailPrice(currentTickerName, detailPriceMax, detailPriceMin, detailPriceCurrent, Shark_Tank_FU_Signal);
+	    		sendMessageDetailPrice(currentTickerName, detailPriceMax, detailPriceMin, detailPriceCurrent, Shark_tank_JP_Signal);
+	    		//document.getElementsByClassName('label-text')[0].innerText =  priceBTCPair +"Ƀ";
+	    		//return priceBTCPair;
+	    }
+	};
+	Httpreq.open("GET",url + currentTickerName+ "BTC" ,false);
+	Httpreq.send();
+}
+
 function getServerTime(){
 	var url = "https://api.binance.com/api/v1/time"; 
 	var Httpreq = new XMLHttpRequest(); // a new request
@@ -1513,6 +1537,21 @@ function sendMessage_Shark_Tank_FU_Signal(coinText){
 	}
 }
 
+function sendMessageDetailPrice(coinText, max, min, current, groupID){
+	var info = "Max: " + max + "Ƀ%0A" +
+			   "Min: " + min + "Ƀ%0A" +
+			   "Current: " + current + "Ƀ%0A%0A Let The Game Come To You👈🙏✌️👌🚀";
+	var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + groupID + "&text=" + info; 
+	var Httpreq = new XMLHttpRequest(); // a new request
+	Httpreq.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	    		console.log("CurrentPrice: " + current);
+	    }
+	};
+	Httpreq.open("GET",url,true);
+	Httpreq.send();
+}
+
 
 window.onkeydown = function(e) {
 	   var key = e.keyCode ? e.keyCode : e.which;
@@ -1532,6 +1571,8 @@ window.onkeydown = function(e) {
 				sendMessage_Shark_UX_Signal(coinText);		
 				sendMessage_Shark_tank_JP_Signal(coinText);
 				sendMessage_Shark_Tank_FU_Signal(coinText);
+				
+				getDetailPricebyBTC(coinText);
 		   }
 	   }else if(key == 85) {//Update list coin to cache KEY [U]
 		   console.log("Delete list coin.");
