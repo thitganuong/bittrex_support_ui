@@ -1459,7 +1459,7 @@ function sendMessage_Shark_UX_Signal(coinText){
 		    		console.log("Shark_UX_Signal: " + coinText);
 		    }
 		};
-		Httpreq.open("GET",url,false);
+		Httpreq.open("GET",url,true);
 		Httpreq.send();
 	}
 }
@@ -1474,7 +1474,7 @@ function sendMessage_Shark_tank_home_signal(coinText){
 		    		console.log("Shark_tank_home_signal:" + coinText);
 		    }
 		};
-		Httpreq.open("GET",url,false);
+		Httpreq.open("GET",url,true);
 		Httpreq.send();
 	}
 }
@@ -1488,7 +1488,7 @@ function sendMessage_Shark_tank_JP_Signal(coinText){
 		    		console.log("Shark_tank_JP_Signal: " + coinText);
 		    }
 		};
-		Httpreq.open("GET",url,false);
+		Httpreq.open("GET",url,true);
 		Httpreq.send();
 	}
 }
@@ -1502,7 +1502,7 @@ function sendMessage_Shark_Tank_FU_Signal(coinText){
 		    		console.log("Shark_Tank_FU_Signal: " + coinText);
 		    }
 		};
-		Httpreq.open("GET",url,false);
+		Httpreq.open("GET",url,true);
 		Httpreq.send();
 	}
 }
