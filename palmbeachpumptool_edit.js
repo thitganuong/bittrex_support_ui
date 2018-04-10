@@ -1448,11 +1448,16 @@ jQuery(window).load(function () {
 	//load();
 });
 
+function randomText(){
+	var arrayMessage = ['%0A%0A☝️MÚÚÚÚÚÚÚÚCCCC!!!', '%0A%0A☝️MÚUUUUUUUTTTTT🔥🔥','%0A%0A🔥🔥BUY THE TOP💣🔥','%0A%0A🔥🔥ĐU ĐỈNH NGAY💀💀', '%0A%0A🔥🔥PUMP NOW SIR!🔥🔥'  ];
+	var rand = arrayMessage[Math.floor(Math.random() * arrayMessage.length)];
+	return rand; 
+} 
 
 function sendMessage_Shark_UX_Signal(coinText){
 	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
 	if(coinText != undefined && coinText != "" && coinText != null ){
-		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_UX_Signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+"_BTC" +"%0A%0A☝️MÚUUUUUUC!!! "; 
+		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_UX_Signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+"_BTC" +randomText(); 
 		var Httpreq = new XMLHttpRequest(); // a new request
 		Httpreq.onreadystatechange = function() {
 		    if (this.readyState == 4 && this.status == 200) {
@@ -1463,12 +1468,6 @@ function sendMessage_Shark_UX_Signal(coinText){
 		Httpreq.send();
 	}
 }
-
-function randomText(){
-	var arrayMessage = ['%0A%0A☝️MÚÚÚÚÚÚÚÚCCCC!!!', '%0A%0A☝️MÚUUUUUUUTTTTT🔥🔥','%0A%0A🔥🔥BUY THE TOP💣🔥','%0A%0A🔥🔥ĐU ĐỈNH NGAY💀💀', '%0A%0A🔥🔥PUMP NOW SIR!🔥🔥'  ];
-	var rand = arrayMessage[Math.floor(Math.random() * arrayMessage.length)];
-	return rand; 
-} 
 
 function sendMessage_Shark_tank_home_signal(coinText){
 	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
