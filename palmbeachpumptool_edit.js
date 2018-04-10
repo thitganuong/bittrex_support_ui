@@ -1214,7 +1214,7 @@ function floatButton(){
 	childElement.className = "fa fa-plus my-float"; //fa-plus
 	buttonFloat.appendChild(childElement);
 	x.appendChild(buttonFloat);
-	if(autoSend != undefined){
+	if(typeof(autoSend) !== "undefined"){
 		if(autoSend){ 
 			var coinText = document.getElementsByTagName('mark')[0].textContent;
 			coinText = coinText.replace("(", "");
@@ -1518,13 +1518,15 @@ window.onkeydown = function(e) {
 	   }else if (key == 83) {//Next  KEY [S]
 		   jumpNext();
 	   }else if (key == 84){//Send message to group
-			var coinText = document.getElementsByTagName('mark')[0].textContent;
-			coinText = coinText.replace("(", "");
-			coinText = coinText.replace(")", "")
-			sendMessage_Shark_tank_home_signal(coinText);
-			sendMessage_Shark_UX_Signal(coinText);		
-			sendMessage_Shark_tank_JP_Signal(coinText);
-			sendMessage_Shark_Tank_FU_Signal(coinText);
+		   if(typeof(autoSend) !== "undefined"){
+				var coinText = document.getElementsByTagName('mark')[0].textContent;
+				coinText = coinText.replace("(", "");
+				coinText = coinText.replace(")", "")
+				sendMessage_Shark_tank_home_signal(coinText);
+				sendMessage_Shark_UX_Signal(coinText);		
+				sendMessage_Shark_tank_JP_Signal(coinText);
+				sendMessage_Shark_Tank_FU_Signal(coinText);
+		   }
 	   }else if(key == 85) {//Update list coin to cache KEY [U]
 		   console.log("Delete list coin.");
 		   forceUpdateTickers();
