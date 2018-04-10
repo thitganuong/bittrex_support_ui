@@ -1,5 +1,6 @@
 var d = new Date();
 var n = d.getTime();	
+console.log("Start load at: " +  n);
 /*!***************************************************
 * mark.js v8.11.1
 * https://markjs.io/
@@ -1216,7 +1217,7 @@ function floatButton(){
 	childElement.className = "fa fa-plus my-float"; //fa-plus
 	buttonFloat.appendChild(childElement);
 	x.appendChild(buttonFloat);
-	console.log("Load pick button: " +  (getTime()-time)/1000);
+	console.log("Load pick button: " +  (n - getTime())/1000);
 	if(typeof(autoSend) !== "undefined"){
 		if(autoSend){ 
 			var coinText = document.getElementsByTagName('mark')[0].textContent;
