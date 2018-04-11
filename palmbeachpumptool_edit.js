@@ -1567,6 +1567,8 @@ function sendMessage_Shark_group(coinText, groupID, groupNum){
 //}
 
 function sendMessageDetailPrice(coinText, max, min, current, groupID, startTime, endTime){
+	console.log("startTime : " + startTime);
+	console.log("startTime : " + endTime);
 	var info = "Sent Time: " + (endTime-startTime)/1000+"s" + "%0A"+
 			   "Max:       " + max + "Ƀ%0A" +
 			   "Min:       " + min + "Ƀ%0A" +
