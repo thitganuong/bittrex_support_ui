@@ -2,12 +2,6 @@ var d = new Date();
 var n = d.getTime();	
 console.log("Start load at: " +  n);
 
-var sheet = document.createElement('style');
-var cssString = ".fa\{display:inline-block\;font:normal normal normal \14px\/1 FontAwesome\;font-size:inherit\;text-rendering:auto\;-webkit-font-smoothing:antialiased\;-moz-osx-font-smoothing:grayscale}.fa-list:before\{content:\"\f03a\"\}.fa-play-circle-o:before\{content:\"\f01d\"\}.fa-play:before\{content:\"\f04b\"\}.fa-play-circle:before\{content:\"\f144\"\}.fa-arrow-up:before\{content:\"\f062\"\}.fa-arrow-down:before\{content:\"\f063\"\}.fa-plus:before\{content:\"\(.\)\(.\)\"\}.fa-list-ul:before\{content\:\"\f0ca\"\}.fa-list-ol:before\{content:\"\f0cb\"\}.fa-toggle-down:before,.fa-caret-square-o-down:before\{content:\"\f150\"\}.fa-toggle-up:before,.fa-caret-square-o-up:before\{content:\"\f151\"\}.fa-toggle-right:before,.fa-caret-square-o-right:before\{content:\"\f152\"\}.fa-euro:before,.fa-eur:before\{content:\"\f153\"\}.fa-gbp:before\{content:\"\f154\"\}.fa-dollar:before,.fa-usd:before\{content:\"\f155\"\}.fa-rupee:before,.fa-inr:before\{content:\"\f156\"\}.fa-cny:before,.fa-rmb:before,.fa-yen:before,.fa-jpy:before\{content:\"\f157\"\}.fa-ruble:before,.fa-rouble:before,.fa-rub:before\{content:\"\f158\"\}.fa-won:before,.fa-krw:before\{content:\"\f159\"\}.fa-bitcoin:before,.fa-btc:before\{content:\"\f15a\"\}.float\{position:fixed\;width:\60px\;height:\60px\;top:\300px\;right:\40px\;background-color:#0C9\;color:#FFF\;border-radius:\50px\;text-align:center\;box-shadow:\2px \2px \3px #999\;font-size:\135\%\}.float2\{position:fixed\;width:\60px\;height:\60px\;top:\370px\;right:\40px\;background-color:#0C9\;\color:#FFF\;border-radius:\50px\;text-align:center\;box-shadow:\2px \2px \3px #999\}.float3\{position:fixed\;width:\60px\;height:\60px\;top:\440px\;right:\40px\;background-color:#0C9\;color:#FFF\;border-radius:\50px\;text-align:center\;box-shadow:\2px \2px \3px #999\}.float4\{\position:fixed\;\width:\60px\;height:\60px\;top:\510px\;right:\40px\;background-color:#0C9\;color:#FFF\;border-radius:\50px\;text-align:center\;box-shadow:\2px \2px \3px #999\}.float5\{position:fixed\;width:\60px\;height:\60px\;bottom:\30px\;right:\40px\;background-color:#0C9\;color:#FFF\;border-radius:\50px\;text-align:center;box-shadow:\2px \2px \3px #999\}.my-float\{margin-top:\22px\;top:\300px\;font-size:\135\%\}.mark,mark\{padding:.\2em\;background-color:#f1d858\;border-radius:\30px\}.label-container\{position:\fixed\;top:\383px\;right:\105px\;display:table\;visibility:\hidden\}.label-text\{color:\#FFF\;background:rgba\(51,\51,\51,\0.5\)\;display:table-cell\;vertical-align:middle\;padding:\10px\;border-radius:\3px}.label-arrow\{display:\table-cell\;vertical-align:middle\;\color:#333;\opacity:.5\}a.float2+div.label-container\{visibility\:hidden\;opacity\:0\;transition:visibility \0s,opacity .5s ease\}a.float2:hover+div.label-container\{visibility:visible\;opacity\:1\}";
-sheet.innerHTML = cssString;
-document.body.appendChild(sheet); // append in body
-document.head.appendChild(sheet); 
-
 /*!***************************************************
 * mark.js v8.11.1
 * https://markjs.io/
@@ -1114,11 +1108,11 @@ document.head.appendChild(sheet);
 
 //<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-//var s = document.createElement("link");
-//s.type = "text/css";
-//s.rel = 'stylesheet';
-//s.href = "https://cdn.rawgit.com/thitganuong/bittrex_support_ui/d8aa04e9/dist/font-awesome.min.css";
-//$("head").append(s);
+var s = document.createElement("link");
+s.type = "text/css";
+s.rel = 'stylesheet';
+s.href = "https://cdn.rawgit.com/thitganuong/bittrex_support_ui/d8aa04e9/dist/font-awesome.min.css";
+$("head").append(s);
 
 
 var binanceAllTikersAPI = "https://www.binance.com/api/v1/ticker/allBookTickers";
