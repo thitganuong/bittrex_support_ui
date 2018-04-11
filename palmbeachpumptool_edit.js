@@ -1525,7 +1525,7 @@ load();
 console.log("Page is loaded " + (getTime() - n)/1000 + "s");
 
 
-
+////////////////////////////////////////////////////////////////////////
 //function buyNow(){
 //	getServerTime();
 //	//var hash = CryptoJS.HmacSHA256("symbol=LTCBTC&side=BUY&type=MARKET&quantity=1&recvWindow=6000000&timestamp="+serverTime, Secret);
