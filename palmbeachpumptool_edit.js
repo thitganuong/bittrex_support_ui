@@ -1162,7 +1162,7 @@ function getAllTickers(){
 		    		return jsonData;
 		    }
 		};
-		Httpreq.open("GET",url,false);
+		Httpreq.open("GET",url,true);//false -> true
 		Httpreq.send();
 	} else {
 		console.log("Binance list coin was cached, no need to fetch ");
@@ -1368,7 +1368,7 @@ function getTickerPricebyBTC(currentTickerName){
 	    		return priceBTCPair;
 	    }
 	};
-	Httpreq.open("GET",url + currentTickerName+ "BTC" ,false);
+	Httpreq.open("GET",url + currentTickerName+ "BTC" ,true);//false -> true
 	Httpreq.send();
 }
 
@@ -1383,7 +1383,7 @@ function getTickerPricebyUSD(currentTickerName){
 	    		return priceBTCPair;
 	    }
 	};
-	Httpreq.open("GET",url + currentTickerName+ "USDT" ,false);
+	Httpreq.open("GET",url + currentTickerName+ "USDT" ,true);//false -> true 
 	Httpreq.send();
 }
 
@@ -1416,7 +1416,7 @@ function getDetailPricebyBTC(currentTickerName, groupNum, startTime, endTime){
 		    	}
 	    }
 	};
-	Httpreq.open("GET",url + currentTickerName+ "BTC" ,false);
+	Httpreq.open("GET",url + currentTickerName+ "BTC" ,true);//false -> true
 	Httpreq.send();
 }
 
@@ -1430,7 +1430,7 @@ function getServerTime(){
 	    		return serverTime;
 	    }
 	};
-	Httpreq.open("GET",url,false);
+	Httpreq.open("GET",url,true);//false -> true
 	Httpreq.send();
 }
 jQuery(window).load(function () {
