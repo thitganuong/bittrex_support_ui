@@ -1208,6 +1208,19 @@ function jumpToPortfolio(){
 	document.getElementsByClassName('portfolio-group-title')[1].scrollIntoView();
 }
 
+function sendAllGroup(){
+	var coinText = document.getElementsByTagName('mark')[0].textContent;
+	coinText = coinText.replace("(", "");
+	coinText = coinText.replace(")", "")
+	var startTime = getTime();
+	sendMessage_Shark_group(coinText, Shark_tank_home_signal, 1);
+	sendMessage_Shark_group(coinText, Shark_UX_Signal, 2);	
+	sendMessage_Shark_group(coinText, Shark_tank_JP_Signal, 3);
+	sendMessage_Shark_group(coinText, Shark_Tank_FU_Signal, 4);
+	
+	getDetailPricebyBTC(coinText, startTime);
+}
+
 function floatButton(){
 	var buttonFloat = document.createElement("a");
 	buttonFloat.className = "float";
@@ -1220,15 +1233,7 @@ function floatButton(){
 	console.log("Load pick button: " +  (getTime() - n)/1000);
 	if(typeof(autoSend) !== "undefined"){
 		if(autoSend){ 
-			var coinText = document.getElementsByTagName('mark')[0].textContent;
-			coinText = coinText.replace("(", "");
-			coinText = coinText.replace(")", "")
-			sendMessage_Shark_tank_home_signal(coinText, getTime());
-			sendMessage_Shark_UX_Signal(coinText,getTime());	
-			sendMessage_Shark_tank_JP_Signal(coinText,getTime());
-			sendMessage_Shark_Tank_FU_Signal(coinText,getTime());
-			
-			getDetailPricebyBTC(coinText);
+			sendAllGroup();
 		}
 	}
 }
@@ -1388,7 +1393,7 @@ function getTickerPricebyUSD(currentTickerName){
 	Httpreq.send();
 }
 
-function getDetailPricebyBTC(currentTickerName){
+function getDetailPricebyBTC(currentTickerName, startTime){
 	var url = "https://api.binance.com/api/v1/klines?interval=5m&limit=1&symbol="; 
 	var Httpreq = new XMLHttpRequest(); // a new request
 	Httpreq.onreadystatechange = function() {
@@ -1398,10 +1403,10 @@ function getDetailPricebyBTC(currentTickerName){
 	    		var detailPriceMin = detailPrice[0][3];
 	    		var detailPriceCurrent = detailPrice[0][4];
 	    		console.log("Param: " + detailPriceMax+ " " + detailPriceMin+ " " +detailPriceCurrent);
-	    		sendMessageDetailPrice(currentTickerName, detailPriceMax, detailPriceMin, detailPriceCurrent, Shark_tank_home_signal);
-	    		sendMessageDetailPrice(currentTickerName, detailPriceMax, detailPriceMin, detailPriceCurrent, Shark_UX_Signal);
-	    		sendMessageDetailPrice(currentTickerName, detailPriceMax, detailPriceMin, detailPriceCurrent, Shark_Tank_FU_Signal);
-	    		sendMessageDetailPrice(currentTickerName, detailPriceMax, detailPriceMin, detailPriceCurrent, Shark_tank_JP_Signal);
+	    		sendMessageDetailPrice(currentTickerName, detailPriceMax, detailPriceMin, detailPriceCurrent, Shark_tank_home_signal,1, startTime, time1);
+	    		sendMessageDetailPrice(currentTickerName, detailPriceMax, detailPriceMin, detailPriceCurrent, Shark_UX_Signal,2, startTime, time2);
+	    		sendMessageDetailPrice(currentTickerName, detailPriceMax, detailPriceMin, detailPriceCurrent, Shark_Tank_FU_Signal,3, startTime, time3);
+	    		sendMessageDetailPrice(currentTickerName, detailPriceMax, detailPriceMin, detailPriceCurrent, Shark_tank_JP_Signal,4, startTime, time4);
 	    		//document.getElementsByClassName('label-text')[0].innerText =  priceBTCPair +"Ƀ";
 	    		//return priceBTCPair;
 	    }
@@ -1477,63 +1482,39 @@ jQuery(window).load(function () {
 });
 
 function randomText(){
-	var arrayMessage = ['%0A%0A☝️MÚÚÚÚÚÚÚÚCCCC!!!', '%0A%0A☝️MÚUUUUUUUTTTTT🔥🔥','%0A%0A🔥🔥BUY THE TOP💣🔥','%0A%0A🔥🔥ĐU ĐỈNH NGAY💀💀', '%0A%0A🔥🔥PUMP NOW SIR!🔥🔥'  ];
+	var arrayMessage = ['%0A%0A☝️MÚÚÚÚÚÚÚÚCCCC!!!', '%0A%0A☝️MÚUUUUUUUTTTTT🔥🔥','%0A%0A🔥🔥BUY THE TOP💣🔥','%0A%0A🔥🔥ĐU ĐỈNH NGAY💀💀', '%0A%0A🔥🔥PUMP NOW SIR!🔥🔥' , '%0A%0A👉PHAAAAANG  🚑🚑' ];
 	var rand = arrayMessage[Math.floor(Math.random() * arrayMessage.length)];
 	return rand; 
 } 
 
-function sendMessage_Shark_UX_Signal(coinText, time){
-	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
-	if(coinText != undefined && coinText != "" && coinText != null ){
-		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_UX_Signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+"_BTC" +randomText()+ " (" + ((getTime()-time)/1000)+"s" + ")"; ; 
-		var Httpreq = new XMLHttpRequest(); // a new request
-		Httpreq.onreadystatechange = function() {
-		    if (this.readyState == 4 && this.status == 200) {
-		    		console.log("Shark_UX_Signal: " + coinText);
-		    }
-		};
-		Httpreq.open("GET",url,true);
-		Httpreq.send();
-	}
-}
-
-function sendMessage_Shark_tank_home_signal(coinText, time){
+var time1, time2,time3,time4;
+function sendMessage_Shark_group(coinText, groupID, groupNum){
 	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
 	if(coinText != undefined && coinText != "" && coinText != null ){
 		//'https://www.binance.com/trade.html?symbol=' + tickerString.toUpperCase() +'_BTC'
-		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_tank_home_signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+"_BTC"+ randomText()+ " (" + ((getTime()-time)/1000)+"s" + ")"; ; 
+		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + groupID + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+"_BTC"+ randomText(); 
 		var Httpreq = new XMLHttpRequest(); // a new request
 		Httpreq.onreadystatechange = function() {
 		    if (this.readyState == 4 && this.status == 200) {
-		    		console.log("Shark_tank_home_signal:" + coinText);
-		    }
-		};
-		Httpreq.open("GET",url,true);
-		Httpreq.send();
-	}
-}
-function sendMessage_Shark_tank_JP_Signal(coinText, time){
-	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
-	if(coinText != undefined && coinText != "" && coinText != null ){
-		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_tank_JP_Signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+"_BTC" + randomText()+ " (" + ((getTime()-time)/1000)+"s" + ")"; 
-		var Httpreq = new XMLHttpRequest(); // a new request
-		Httpreq.onreadystatechange = function() {
-		    if (this.readyState == 4 && this.status == 200) {
-		    		console.log("Shark_tank_JP_Signal: " + coinText);
-		    }
-		};
-		Httpreq.open("GET",url,true);
-		Httpreq.send();
-	}
-}
-function sendMessage_Shark_Tank_FU_Signal(coinText, time){
-	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
-	if(coinText != undefined && coinText != "" && coinText != null ){
-		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_Tank_FU_Signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+ "_BTC" + randomText()+ " (" + ((getTime()-time)/1000)+"s" + ")"; ; 
-		var Httpreq = new XMLHttpRequest(); // a new request
-		Httpreq.onreadystatechange = function() {
-		    if (this.readyState == 4 && this.status == 200) {
-		    		console.log("Shark_Tank_FU_Signal: " + coinText);
+				    	switch(groupNum) {
+				        case 1: 
+				        		time1 = getTime();
+				    			console.log("Shark_tank_home_signal:" + coinText);
+				            break;
+				        case 2:
+				        		time2 = getTime();
+				        		console.log("Shark_UX_Signal: " + coinText);
+				            break;
+				        case 3:
+				        		time3 = getTime();
+				        		console.log("Shark_tank_JP_Signal: " + coinText);
+				            break;
+				        case 4:
+				        		time4 = getTime();
+				        		console.log("Shark_Tank_FU_Signal: " + coinText);
+				            break;
+				        default:break;
+				    }
 		    }
 		};
 		Httpreq.open("GET",url,true);
@@ -1541,14 +1522,75 @@ function sendMessage_Shark_Tank_FU_Signal(coinText, time){
 	}
 }
 
-function sendMessageDetailPrice(coinText, max, min, current, groupID){
-	var info = "Max: " + max + "Ƀ%0A" +
-			   "Min: " + min + "Ƀ%0A" +
-			   "Current: " + current + "Ƀ%0A%0A Let The Game Come To You👈🙏✌️👌🚀";
+//function sendMessage_Shark_UX_Signal(coinText){
+//	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
+//	if(coinText != undefined && coinText != "" && coinText != null ){
+//		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_UX_Signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+"_BTC" +randomText(); 
+//		var Httpreq = new XMLHttpRequest(); // a new request
+//		Httpreq.onreadystatechange = function() {
+//		    if (this.readyState == 4 && this.status == 200) {
+//		    		console.log("Shark_UX_Signal: " + coinText);
+//		    }
+//		};
+//		Httpreq.open("GET",url,true);
+//		Httpreq.send();
+//	}
+//}
+//
+//function sendMessage_Shark_tank_JP_Signal(coinText){
+//	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
+//	if(coinText != undefined && coinText != "" && coinText != null ){
+//		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_tank_JP_Signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+"_BTC" + randomText(); 
+//		var Httpreq = new XMLHttpRequest(); // a new request
+//		Httpreq.onreadystatechange = function() {
+//		    if (this.readyState == 4 && this.status == 200) {
+//		    		console.log("Shark_tank_JP_Signal: " + coinText);
+//		    }
+//		};
+//		Httpreq.open("GET",url,true);
+//		Httpreq.send();
+//	}
+//}
+//function sendMessage_Shark_Tank_FU_Signal(coinText){
+//	//https://api.telegram.org/botID/sendMessage?chat_id=groupID&text=test
+//	if(coinText != undefined && coinText != "" && coinText != null ){
+//		var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + Shark_Tank_FU_Signal + "&text=https://www.binance.com/trade.html?symbol=" + coinText.toUpperCase()+ "_BTC" + randomText(); 
+//		var Httpreq = new XMLHttpRequest(); // a new request
+//		Httpreq.onreadystatechange = function() {
+//		    if (this.readyState == 4 && this.status == 200) {
+//		    		console.log("Shark_Tank_FU_Signal: " + coinText);
+//		    }
+//		};
+//		Httpreq.open("GET",url,true);
+//		Httpreq.send();
+//	}
+//}
+
+function sendMessageDetailPrice(coinText, max, min, current, groupID, startTime, endTime){
+	var info = "Sent Time: " + (endTime-startTime)/1000+"s" + "%0A"+
+			   "Max:       " + max + "Ƀ%0A" +
+			   "Min:       " + min + "Ƀ%0A" +
+			   "Current:   " + current + "Ƀ%0A%0A Let The Game Come To You👈🙏✌️👌🚀";
 	var url = "https://api.telegram.org/" + botID +"/sendMessage?chat_id=" + groupID + "&text=" + info; 
 	var Httpreq = new XMLHttpRequest(); // a new request
 	Httpreq.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
+		    	switch(groupID) {
+		        case 1:
+		            time1 = 0;
+		            break;
+		        case 2:
+		        	 	time2 = 0;
+		            break;
+		        case 3:
+		        		time3 = 0;
+		            break;
+		        case 4:
+		        		time4 = 0;
+		            break;
+		        default:
+		        		break;
+	    }
 	    		console.log("CurrentPrice: " + current);
 	    }
 	};
@@ -1574,15 +1616,7 @@ window.onkeydown = function(e) {
 		   jumpNext();
 	   }else if (key == 84){//Send message to group
 		   if(typeof(autoSend) !== "undefined"){
-				var coinText = document.getElementsByTagName('mark')[0].textContent;
-				coinText = coinText.replace("(", "");
-				coinText = coinText.replace(")", "")
-				sendMessage_Shark_tank_home_signal(coinText, getTime());
-				sendMessage_Shark_UX_Signal(coinText, getTime());		
-				sendMessage_Shark_tank_JP_Signal(coinText, getTime());
-				sendMessage_Shark_Tank_FU_Signal(coinText, getTime());
-				
-				getDetailPricebyBTC(coinText);
+			   sendAllGroup();
 		   }
 	   }else if(key == 85) {//Update list coin to cache KEY [U]
 		   console.log("Delete list coin.");
